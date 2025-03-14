@@ -9,6 +9,9 @@ import Foundation
 import Observation
 @Observable
 class searchViewModel {
+    var searchTerm : String = ""
+    var title : String = "Search for ideas"
+    
     var items: [Item] = [
         .init(
             id: UUID().uuidString,
@@ -16,7 +19,6 @@ class searchViewModel {
             isSelected : false,
             imageName : "memes"
         ),
-        
         .init(
             id: UUID().uuidString,
             item_Name: "Recently added",
@@ -49,4 +51,12 @@ class searchViewModel {
             imageName : "actually"
         )
     ]
+    
+    var filteredItems : [Item] {
+        if searchTerm.isEmpty {
+            return items
+        }
+        return items
+            .filter{$0.item_Name.localizedCaseInsensitiveContains(searchTerm)}
+    }
 }

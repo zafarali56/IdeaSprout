@@ -15,13 +15,17 @@ struct searchView: View {
         NavigationStack{
             
             VStack{
-                
+                searchBarView(
+                    searchTerm: $viewModel.searchTerm,
+                    title: viewModel
+                        .title)
                 Text("Popular on Sproutia")
                     .font(.title2)
                     .fontWeight(.semibold)
                     .fontDesign(.rounded)
                 
                 categoryGridView(viewModel: viewModel)
+                Spacer()
             }
         }
     }

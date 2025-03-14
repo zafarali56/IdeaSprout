@@ -11,7 +11,7 @@ import SwiftUI
 struct IdeaSproutApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            searchView()
         }
     }
 }
