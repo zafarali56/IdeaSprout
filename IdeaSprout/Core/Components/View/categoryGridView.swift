@@ -17,23 +17,7 @@ struct categoryGridView: View {
         LazyVGrid(columns: gridItems, spacing : 1)
         {
             ForEach(viewModel.items) {item in
-                ZStack{
-                    Image(item.imageName)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: imageDimension, height: 120)
-                        .clipped()
-                        .overlay {
-                            Color.black.opacity(0.4)
-                        }
-                    
-                    Text(item.item_Name)
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.white)
-                    
-                }.clipShape(RoundedRectangle(cornerRadius: 20))
-                    .padding(5)
+                categoryItemView(item: item, width: imageDimension)
             }
         }
     
@@ -43,4 +27,34 @@ struct categoryGridView: View {
 
 #Preview {
     categoryGridView(viewModel: searchViewModel())
+}
+
+struct categoryItemView: View {
+   private var item : Item
+    private var width : CGFloat
+    
+    
+    init(item: Item, width: CGFloat) {
+        self.item = item
+        self.width = width
+    }
+    var body: some View {
+        ZStack{
+            Image(item.imageName)
+                .resizable()
+                .scaledToFill()
+                .frame(width: width, height: 120)
+                .clipped()
+                .overlay {
+                    Color.black.opacity(0.4)
+                }
+            
+            Text(item.item_Name)
+                .font(.headline)
+                .fontWeight(.semibold)
+                .foregroundStyle(.white)
+            
+        }.clipShape(RoundedRectangle(cornerRadius: 20))
+            .padding(5)
+    }
 }

@@ -12,41 +12,41 @@ class searchViewModel {
     var items: [Item] = [
         .init(
             id: UUID().uuidString,
-            item_Name: "Blue Wallpaper",
+            item_Name: "New",
             isSelected : false,
-            imageName : ""
+            imageName : "memes"
         ),
         
         .init(
             id: UUID().uuidString,
-            item_Name: "Beach Pictures",
+            item_Name: "Recently added",
             isSelected : false,
-            imageName : ""
+            imageName : "op"
         )
         ,
         .init(
             id: UUID().uuidString,
-            item_Name: "Dp for what'sApp",
+            item_Name: "Sigma memes",
             isSelected : false,
-            imageName : ""
+            imageName : "sigma"
         ),
         .init(
             id: UUID().uuidString,
-            item_Name: "Purple aesthetics",
+            item_Name: "Swift",
             isSelected : false,
-            imageName : ""
+            imageName : "swiftLang"
         ),
         .init(
             id: UUID().uuidString,
-            item_Name: "Selfie poses",
+            item_Name: "latest",
             isSelected : false,
-            imageName : ""
+            imageName : "catmeme"
         ),
         .init(
             id: UUID().uuidString,
-            item_Name: "Easy dinner recipe",
+            item_Name: "You Favourites",
             isSelected : false,
-            imageName : ""
+            imageName : "actually"
         )
     ]
 }

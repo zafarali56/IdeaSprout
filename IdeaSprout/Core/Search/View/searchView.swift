@@ -21,7 +21,6 @@ struct searchView: View {
                     .fontWeight(.semibold)
                     .fontDesign(.rounded)
                 
-                
                 categoryGridView(viewModel: viewModel)
             }
         }
