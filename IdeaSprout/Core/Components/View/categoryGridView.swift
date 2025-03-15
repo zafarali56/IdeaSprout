@@ -32,8 +32,6 @@ struct categoryGridView: View {
 struct categoryItemView: View {
     private var item : Item
     private var width : CGFloat
-    
-    
     init(item: Item, width: CGFloat) {
         self.item = item
         self.width = width

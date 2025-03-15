@@ -17,7 +17,7 @@ struct searchView: View {
                     title: viewModel
                         .title)
                 if viewModel.searchTerm.isEmpty{
-                    Text("Popular memes")
+                    Text("For you")
                         .font(.title)
                         .fontWeight(.semibold)
                         .fontDesign(.rounded)
