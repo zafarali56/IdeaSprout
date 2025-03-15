@@ -14,13 +14,13 @@ struct categoryGridView: View {
         return UIScreen.main.bounds.width / 2-16
     }
     var body: some View {
-        LazyVGrid(columns: gridItems, spacing : 1)
+        LazyVGrid(columns: gridItems)
         {
             ForEach(viewModel.filteredItems) {item in
                 categoryItemView(item: item, width: imageDimension)
             }
         }
-    
+        
         
     }
 }
@@ -30,7 +30,7 @@ struct categoryGridView: View {
 }
 
 struct categoryItemView: View {
-   private var item : Item
+    private var item : Item
     private var width : CGFloat
     
     

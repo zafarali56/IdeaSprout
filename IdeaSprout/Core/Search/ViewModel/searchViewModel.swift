@@ -10,7 +10,7 @@ import Observation
 @Observable
 class searchViewModel {
     var searchTerm : String = ""
-    var title : String = "Search for ideas"
+    var title : String = "Search for memes"
     
     var items: [Item] = [
         .init(

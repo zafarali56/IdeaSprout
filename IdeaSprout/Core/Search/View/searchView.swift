@@ -8,26 +8,28 @@
 import SwiftUI
 
 struct searchView: View {
-    
     @State private var viewModel = searchViewModel()
-    
     var body: some View {
         NavigationStack{
-            
-            VStack{
+            ScrollView{
                 searchBarView(
                     searchTerm: $viewModel.searchTerm,
                     title: viewModel
                         .title)
-                Text("Popular on Sproutia")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .fontDesign(.rounded)
-                
-                categoryGridView(viewModel: viewModel)
+                if viewModel.searchTerm.isEmpty{
+                    Text("Popular memes")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .fontDesign(.rounded)
+                    categoryGridView(viewModel: viewModel)
+                }
+                else {
+                    categoryGridView(viewModel: viewModel)
+                }
                 Spacer()
             }
         }
+        .padding(5)
     }
 }
 
