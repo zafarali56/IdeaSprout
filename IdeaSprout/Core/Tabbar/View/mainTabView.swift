@@ -39,12 +39,13 @@ struct mainTabView: View {
             {
                 viewModel.selectedTab = oldValue
                 viewModel.showCreateMenu = true
+                viewModel.isFullScreen = false
             }})
         
         .sheet(isPresented: $viewModel.showCreateMenu)
         {
-            createView()
-            .presentationDetents([.height(250)])
+            createView(isFullScreen: $viewModel.isFullScreen)
+                .presentationDetents(viewModel.isFullScreen ? [.large] : [.height(250)])
                 .presentationDragIndicator(.visible)
         }
     }

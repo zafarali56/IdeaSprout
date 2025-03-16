@@ -10,36 +10,49 @@ import SwiftUI
 struct createView: View {
     @State private var viewModel = createViewModel()
     @Environment(\.dismiss) private var dismiss
+    @Binding var isFullScreen : Bool
     var body: some View {
-        NavigationStack{
-            VStack(spacing: 25){
-                Text("Start Creating")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                HStack(spacing: 50)
-                {
-                    createOptionView(title: "Pin", icon: "pin.fill")
-                    createOptionView(title: "College", icon: "scissors")
-                    createOptionView(title: "Board", icon: "square.grid.2x2.fill")
-                }
-                    
-            }
-            .toolbar{
-                ToolbarItem(placement: .topBarLeading, content: {
-                    Button{
-                        dismiss()
-                    }label: {
-                        Image(systemName: "xmark")
-                            .foregroundStyle(.red)
+        if viewModel.showCreateBoard{
+        createBoardView(viewModel: viewModel)
+        }
+        else {
+            VStack {
+                NavigationStack{
+                    VStack(spacing: 25){
+                        Text("Start Creating")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                        HStack(spacing: 50)
+                        {
+                            createOptionView(title: "Pin", icon: "pin.fill")
+                            createOptionView(title: "College", icon: "scissors")
+                            Button {
+                                viewModel.showCreateBoard = true
+                                isFullScreen = true
+                            }label: {
+                                createOptionView(title: "Board", icon: "square.grid.2x2.fill")
+                            }
+                            
+                        }
+                       Spacer()
                     }
-                })
+                    .toolbar{
+                        ToolbarItem(placement: .topBarLeading, content: {
+                            Button{
+                                dismiss()
+                            }label: {
+                                Image(systemName: "xmark")
+                                    .foregroundStyle(.red)
+                            }
+                        })
+                    }
+                }
             }
         }
     }
 }
-
 #Preview {
-    createView()
+    createView(isFullScreen: .constant(false))
 }
 
 struct createOptionView: View {
@@ -62,6 +75,6 @@ struct createOptionView: View {
             Text(title)
                 .font(.caption)
             
-        }
+        }.foregroundStyle(.red)
     }
 }
