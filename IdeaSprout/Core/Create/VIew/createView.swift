@@ -75,6 +75,6 @@ struct createOptionView: View {
             Text(title)
                 .font(.caption)
             
-        }.foregroundStyle(.red)
+        }.foregroundStyle(.black)
     }
 }

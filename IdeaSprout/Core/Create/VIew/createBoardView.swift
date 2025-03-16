@@ -31,7 +31,7 @@ struct createBoardView: View {
                             .fontWeight(.semibold)
                             .foregroundStyle(Color(.darkGray))
                             .padding(.horizontal)
-                            .padding(.vertical,8)
+                            .padding(.vertical,10)
                             .background(Color(.systemGray5))
                             .clipShape(RoundedRectangle(cornerRadius: 15))
                     })
@@ -41,6 +41,7 @@ struct createBoardView: View {
                     .font(.headline)
                     
             }
+            .padding(.vertical)
             Text("Borad Name")
                 .font(.footnote)
                 .foregroundStyle(Color(.darkGray))
