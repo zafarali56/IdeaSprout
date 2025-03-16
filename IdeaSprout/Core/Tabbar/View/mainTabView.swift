@@ -43,8 +43,8 @@ struct mainTabView: View {
         
         .sheet(isPresented: $viewModel.showCreateMenu)
         {
-            Text("create menu")
-                .presentationDetents([.height(250)])
+            createView()
+            .presentationDetents([.height(250)])
                 .presentationDragIndicator(.visible)
         }
     }
