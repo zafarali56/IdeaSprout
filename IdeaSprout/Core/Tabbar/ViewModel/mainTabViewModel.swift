@@ -12,6 +12,7 @@ import UIKit
 class mainTabViewModel{
     var selectedTab : Int = 0
     var showCreateMenu: Bool = false
+    var isFullScreen : Bool = false
     init()
     {
         configureTabBarAppearence()

@@ -12,23 +12,23 @@ struct mainTabView: View {
     var body: some View {
         TabView( selection : $viewModel.selectedTab){
             
-            Tab("Home", systemImage: "house", value: 0) {
+            Tab("Home", systemImage: "house.circle.fill", value: 0) {
                 
             }
-            Tab("Search", systemImage:"magnifyingglass", value: 1)
+            Tab("Search", systemImage:"magnifyingglass.circle.fill", value: 1)
             {
                 
             }
-            Tab("Create", systemImage: "plus", value: 2)
+            Tab("Create", systemImage: "plus.square.fill", value: 2)
             {
                 
             }
         
-            Tab("Notfications", systemImage: "bell", value: 3)
+            Tab("Notfications", systemImage: "bell.circle.fill", value: 3)
             {
                 
             }
-            Tab("Saved", systemImage: "bookmark", value : 4)
+            Tab("Saved", systemImage: "bookmark.circle.fill", value : 4)
             {
                 
             }
@@ -39,12 +39,13 @@ struct mainTabView: View {
             {
                 viewModel.selectedTab = oldValue
                 viewModel.showCreateMenu = true
+                viewModel.isFullScreen = false
             }})
         
         .sheet(isPresented: $viewModel.showCreateMenu)
         {
-            Text("create menu")
-                .presentationDetents([.height(250)])
+            createView(isFullScreen: $viewModel.isFullScreen)
+                .presentationDetents(viewModel.isFullScreen ? [.large] : [.height(250)])
                 .presentationDragIndicator(.visible)
         }
     }
