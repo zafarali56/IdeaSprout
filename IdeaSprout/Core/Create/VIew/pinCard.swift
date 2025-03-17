@@ -22,7 +22,9 @@ struct pinCard: View {
                 ZStack(alignment:.bottomTrailing, content: {
                     Image(viewModel.pin[index].imageName)
                         .resizable()
+                        .scaledToFill()
                         .frame(height: 250)
+                        .frame(width: 160)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     Image(systemName: viewModel.pin[index].isSelected ?"checkmark" : "pin.fill")
                         .foregroundStyle(.white)
