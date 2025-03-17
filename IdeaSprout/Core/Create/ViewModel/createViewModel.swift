@@ -14,5 +14,6 @@ class createViewModel {
     var showCreateBoard : Bool = false
     var boardName : String = ""
     var isSecretBoard : Bool = false
+    var showAddPinView : Bool = false
     
 }

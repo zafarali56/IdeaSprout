@@ -25,7 +25,7 @@ struct createBoardView: View {
                     }
                     Spacer()
                     
-                    Button(action: {}, label: {
+                    Button(action: {viewModel.showAddPinView = true}, label: {
                         Text("Next")
                             .font(.headline)
                             .fontWeight(.semibold)
@@ -78,6 +78,9 @@ struct createBoardView: View {
             
         })
         .padding(.horizontal)
+        .fullScreenCover(isPresented: $viewModel.showAddPinView, content: {
+            addPinView(viewModel: viewModel)
+        })
         
     }
 }
