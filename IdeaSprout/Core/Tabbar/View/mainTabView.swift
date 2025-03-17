@@ -26,7 +26,7 @@ struct mainTabView: View {
         
             Tab("Notfications", systemImage: "bell.circle.fill", value: 3)
             {
-                
+               notificationView()
             }
             Tab("Saved", systemImage: "bookmark.circle.fill", value : 4)
             {
