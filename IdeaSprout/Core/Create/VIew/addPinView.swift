@@ -16,8 +16,16 @@ struct addPinView: View {
     var body: some View {
         NavigationStack{
             ScrollView(content: {
+                LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(),spacing: 16)],spacing: 16)
+                {
+                    ForEach(0 ..< viewModel.pin.count, id: \.self){ index in
+                       pinCard(index: index, viewModel: viewModel)
+                    }
+                }
             }
             )
+            .padding(.top)
+            .padding(.horizontal)
             .toolbar{
                 ToolbarItem(placement: .topBarLeading, content: {
                     HStack{
@@ -29,8 +37,9 @@ struct addPinView: View {
                                 .fontWeight(.bold)
                                 .foregroundStyle(.red)
                         }
+                        Text("Add pin")
                     }
-                    Text("Add pin")
+                  
                 })
             }
             .toolbar{
@@ -42,8 +51,10 @@ struct addPinView: View {
                                 .fontWeight(.semibold)
                                 .foregroundStyle(.white)
                                 .padding(.horizontal)
-                                .padding(.vertical, 15)
+                                .padding(.vertical, 8)
+                                .background(.red)
                                 .clipShape(RoundedRectangle(cornerRadius: 15))
+
                         }
                     }
                 })
