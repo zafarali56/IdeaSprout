@@ -39,7 +39,7 @@ struct createBoardView: View {
                 }
                 Text("Create board")
                     .font(.headline)
-                    
+                
             }
             .padding(.vertical)
             Text("Borad Name")
@@ -55,7 +55,7 @@ struct createBoardView: View {
                 Circle()
                     .fill(Color(.systemGray5))
                     .frame(width: 50, height: 50)
-                    Spacer()
+                Spacer()
                 Circle()
                     .fill(Color(.systemGray5))
                     .frame(width: 50, height: 50)
@@ -73,7 +73,7 @@ struct createBoardView: View {
             })
             Text("If you don't want others to see the board keep it secret")
                 .TitleModifier()
-            .padding(.vertical, 12)
+                .padding(.vertical, 12)
             Spacer()
             
         })

@@ -20,7 +20,6 @@ struct notificationView: View {
                 })
                 
             })
-            
             switch viewModel.tabSelection{
             case .Update:
                 updateView()
