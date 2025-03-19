@@ -9,12 +9,14 @@ import SwiftUI
 
 struct searchBarView: View {
     @Binding var searchTerm : String
+    var showImageIcon : Bool = false
     var title : String
     var body: some View {
         ZStack(alignment: .trailing){
             TextField(title, text: $searchTerm)
             Image(systemName: searchTerm.isEmpty ? "camera.fill" : "xmark.circle.fill")
                 .foregroundStyle(.gray)
+                .opacity(showImageIcon ? 1:0)
                 .onTapGesture {
                     searchTerm = ""
                 }

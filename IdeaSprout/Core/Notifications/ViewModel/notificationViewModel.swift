@@ -15,5 +15,5 @@ enum notificationTabSelection {
 @Observable
 class notificationViewModel{
     var tabSelection : notificationTabSelection = .Update
-    
+    var searchTerm : String = ""
 }

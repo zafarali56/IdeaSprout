@@ -18,14 +18,12 @@ struct notificationView: View {
                 Button(action: {viewModel.tabSelection = .Inbox}, label: {
                     tabSelectionView(title: "Inbox", width: 30, viewModel: viewModel, tabSelection: .Inbox)
                 })
-                
             })
-            
             switch viewModel.tabSelection{
             case .Update:
                 updateView()
             case .Inbox:
-                inboxView()
+                inboxView(viewModel: viewModel)
             }
             Spacer()
         })
