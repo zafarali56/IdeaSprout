@@ -18,7 +18,8 @@ struct inboxView: View {
             inboxCell(title: "New message", imageName: "pencil.circle.fill")
             inboxCell(title: "Invite friends", imageName: "person.crop.circle.fill.badge.plus", subtitle: "Connect to start chatting")
             Spacer()
-        }).padding(.top)
+        }).padding()
+        
     }
 }
 
@@ -58,6 +59,6 @@ struct inboxCell: View {
             })
         
         })
-        .padding(.horizontal)
+       
     }
 }

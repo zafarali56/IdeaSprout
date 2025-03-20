@@ -11,21 +11,19 @@ struct mainTabView: View {
     @State private var viewModel = mainTabViewModel()
     var body: some View {
         TabView( selection : $viewModel.selectedTab){
-            
-            Tab("Home", systemImage: "house.circle.fill", value: 0) {
-                
+            Tab("Home", systemImage: "house", value: 0) {
+               homeView()
             }
-            Tab("Search", systemImage:"magnifyingglass.circle.fill", value: 1){
+            Tab("Search", systemImage:"sparkle.magnifyingglass", value: 1){
                searchView()
             }
-            Tab("Create", systemImage: "plus.square.fill", value: 2){
+            Tab("Create", systemImage: "plus", value: 2){
                 
             }
-        
-            Tab("Notfications", systemImage: "bell.circle.fill", value: 3){
+            Tab("Notfications", systemImage: "bell", value: 3){
                notificationView()
             }
-            Tab("Saved", systemImage: "bookmark.circle.fill", value : 4){
+            Tab("Saved", systemImage: "bookmark", value : 4){
                 
             }
         }.onChange(of: viewModel.selectedTab, {oldValue , newValue in
