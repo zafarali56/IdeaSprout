@@ -15,7 +15,7 @@ struct staggeredGridView: View {
         self.columns = columns
     }
     func setupList()->[[Item]]{
-        var gridArray : [[Item]] = Array(repeating: [], count: 2)
+        var gridArray : [[Item]] = Array(repeating: [], count: columns)
         
         var currentIndex : Int = 0
         for item in items {
@@ -40,7 +40,7 @@ struct staggeredGridView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(maxWidth: .infinity)
-                                    .clipped()
+                                    .clipShape(RoundedRectangle(cornerRadius: 15))
                                 Image(systemName: "ellipsis")
                                 
                                     .imageScale(.large)

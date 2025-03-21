@@ -20,6 +20,7 @@ struct homeView: View {
               .frame(width: 32, height: 2)
       })
       staggeredGridView(items: viewModel.items, columns: 2)
+          .padding()
   })
     }
 }

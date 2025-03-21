@@ -24,7 +24,7 @@ struct mainTabView: View {
                notificationView()
             }
             Tab("Saved", systemImage: "bookmark", value : 4){
-                
+                savedView()
             }
         }.onChange(of: viewModel.selectedTab, {oldValue , newValue in
             if newValue == 2{

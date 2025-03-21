@@ -11,9 +11,11 @@ struct searchBarView: View {
     @Binding var searchTerm : String
     var showImageIcon : Bool = false
     var title : String
+    var alignment: Alignment = .trailing
     var body: some View {
-        ZStack(alignment: .trailing){
+        ZStack(alignment: alignment){
             TextField(title, text: $searchTerm)
+                .padding(.leading, alignment == .leading ? 30 : 0)
             Image(systemName: searchTerm.isEmpty ? "camera.fill" : "xmark.circle.fill")
                 .foregroundStyle(.gray)
                 .opacity(showImageIcon ? 1:0)
