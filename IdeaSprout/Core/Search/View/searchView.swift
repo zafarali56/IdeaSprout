@@ -29,7 +29,7 @@ struct searchView: View {
                 Spacer()
             }
         }
-        .padding(5)
+        .padding(.vertical)
     }
 }
 
