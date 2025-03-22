@@ -34,7 +34,7 @@ struct boardCellView: View {
                 
             })
             .foregroundStyle(.gray)
-    })
+        })
     }
 }
 

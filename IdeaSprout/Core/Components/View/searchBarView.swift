@@ -18,13 +18,14 @@ struct searchBarView: View {
                 .padding(.leading, alignment == .leading ? 30 : 0)
             Image(systemName: searchTerm.isEmpty ? "camera.fill" : "xmark.circle.fill")
                 .foregroundStyle(.gray)
-                .opacity(showImageIcon ? 1:0)
+                .opacity(showImageIcon ? 0:1)
                 .onTapGesture {
                     searchTerm = ""
                 }
         }
-        .padding()
-        .background(RoundedRectangle(cornerRadius: 30).fill(Color(.systemGray6)))
+        .padding(.horizontal)
+        .padding(.vertical,10)
+        .background(RoundedRectangle(cornerRadius: 10).fill(Color(.systemGray6)))
     }
 }
 

@@ -13,12 +13,13 @@ struct boardView: View {
         self._viewModel = Bindable(viewModel)
     }
     var body: some View {
-    VStack(spacing: 20,content: {
+    VStack(spacing: 15,content: {
         boardOptionView()
         ScrollView(content: {
             LazyVGrid(columns:[GridItem(.flexible()),GridItem(.flexible())],spacing: 16, content: {
                 ForEach(0 ..< 3, content:{ index in
                    boardCellView()
+                        .padding()
                 })
             })
         }).scrollIndicators(.hidden)
@@ -63,6 +64,7 @@ struct boardOptionView: View {
             Spacer()
             
         })
-        .padding(.leading)
+        .padding(.top)
+        .padding(.horizontal)
     }
 }
