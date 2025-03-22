@@ -52,6 +52,7 @@ struct savedView: View {
                         .opacity(0.4)
                 })
                 .padding(.horizontal)
+                .padding(.vertical,4)
                 HStack {
                     searchBarView(searchTerm: $viewModel.searchTerm, title: "Search your pins", alignment: .leading)
                         .frame(width: max(proxy.size.width - 50, 0))
