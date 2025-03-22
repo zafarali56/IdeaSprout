@@ -11,25 +11,27 @@ struct searchView: View {
     @State private var viewModel = searchViewModel()
     var body: some View {
         NavigationStack{
-            ScrollView{
-                searchBarView(
-                    searchTerm: $viewModel.searchTerm,
-                    title: viewModel
-                        .title)
-                if viewModel.searchTerm.isEmpty{
-                    Text("For you")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .fontDesign(.rounded)
-                    categoryGridView(viewModel: viewModel)
-                }
-                else {
-                    categoryGridView(viewModel: viewModel)
-                }
-                Spacer()
+            ScrollView(){
+                VStack(alignment: .leading,content: {
+                    searchBarView(
+                        searchTerm: $viewModel.searchTerm,
+                        title: viewModel
+                            .title)
+                    if viewModel.searchTerm.isEmpty{
+                        Text("For you")
+                            .font(.title)
+                            .fontWeight(.semibold)
+                            .fontDesign(.rounded)
+                        categoryGridView(viewModel: viewModel)
+                    }
+                    else {
+                        categoryGridView(viewModel: viewModel)
+                    }
+                    Spacer()
+                })        .padding(5)
+
             }
         }
-        .padding(.vertical)
     }
 }
 
