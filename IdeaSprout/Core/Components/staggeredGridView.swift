@@ -31,20 +31,20 @@ struct staggeredGridView: View {
     }
     var body: some View {
         ScrollView(.vertical, content: {
-            HStack(alignment: .top, spacing: 10, content: {
+            HStack(alignment: .top, spacing: 5, content: {
                 ForEach(setupList(), id: \.self, content: {columnData in
-                    LazyVStack(spacing: 10, content: {
+                    LazyVStack(spacing: 5, content: {
                         ForEach((columnData), content: {item in
                             VStack(alignment: .trailing, content: {
                                 Image(item.imageName)
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(maxWidth: .infinity)
-                                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
                                 Image(systemName: "ellipsis")
                                 
                                     .imageScale(.large)
-                                    .padding(.vertical)
+                                    .padding(.vertical,2)
                                 
                             })
                         })

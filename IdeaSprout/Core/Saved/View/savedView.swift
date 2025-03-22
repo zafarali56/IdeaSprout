@@ -52,6 +52,7 @@ struct savedView: View {
                         .opacity(0.4)
                 })
                 .padding(.horizontal)
+                .padding(.vertical,4)
                 HStack {
                     searchBarView(searchTerm: $viewModel.searchTerm, title: "Search your pins", alignment: .leading)
                         .frame(width: max(proxy.size.width - 50, 0))
@@ -65,7 +66,7 @@ struct savedView: View {
                     staggeredGridView(items: viewModel.items, columns: 3)
                         .padding()
                 case .board:
-                    Text("Board")
+                boardView(viewModel: viewModel)
                 }
                 Spacer()
             })
