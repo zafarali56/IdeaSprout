@@ -13,7 +13,7 @@ struct notificationView: View {
         VStack(spacing: 30, content: {
             HStack(spacing: 30 ,content: {
                 Button(action: {viewModel.tabSelection = .Update}, label: {
-                    tabSelectionView(title: "Update", width: 70, viewModel: viewModel, tabSelection: .Update)
+                    tabSelectionView(title: "Update", width:70, viewModel: viewModel, tabSelection: .Update)
                 })
                 Button(action: {viewModel.tabSelection = .Inbox}, label: {
                     tabSelectionView(title: "Inbox", width: 30, viewModel: viewModel, tabSelection: .Inbox)

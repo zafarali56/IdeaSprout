@@ -13,7 +13,7 @@ struct savedView: View {
         
         GeometryReader { proxy in
             VStack(content: {
-                HStack(spacing: 30,content: {
+                HStack(spacing: 20,content: {
                     Circle().fill(Color(.systemGray5))
                         .frame(width: 30, height: 30)
                         .overlay(content:{
@@ -25,24 +25,24 @@ struct savedView: View {
                     Button(action: {viewModel.tabSelection = .pin}, label: {
                         VStack(spacing: 4,content: {
                             Text("Pins")
-                                .font(.subheadline)
+                                .font(.headline)
                                 .fontWeight(.semibold)
-                                .foregroundStyle(Color(.red))
+                                .foregroundStyle(Color(.black))
                             Rectangle().frame(width: 60, height: 4)
-                                .frame(width: 60, height: 4)
-                                .foregroundStyle(viewModel.tabSelection == .pin ? Color(.darkGray) : .clear)
+                                .frame(width: 70, height: 4)
+                                .foregroundStyle(viewModel.tabSelection == .pin ? Color(.red) : .clear)
                         })
                     })
                     
                     Button(action: {viewModel.tabSelection = .board}, label: {
                         VStack(spacing: 4,content: {
                             Text("Boards")
-                                .font(.subheadline)
+                                .font(.headline)
                                 .fontWeight(.semibold)
-                                .foregroundStyle(Color(.red))
+                                .foregroundStyle(Color(.black))
                             Rectangle().frame(width: 60, height: 4)
-                                .frame(width: 60, height: 4)
-                                .foregroundStyle(viewModel.tabSelection == .board ? Color(.darkGray) : .clear)
+                                .frame(width: 70, height: 4)
+                                .foregroundStyle(viewModel.tabSelection == .board ? Color(.red) : .clear)
                         })
                     })
                     
@@ -52,13 +52,13 @@ struct savedView: View {
                         .opacity(0.4)
                 })
                 .padding(.horizontal)
-                .padding(.vertical,4)
+                
                 HStack {
                     searchBarView(searchTerm: $viewModel.searchTerm, title: "Search your pins", alignment: .leading)
                         .frame(width: max(proxy.size.width - 50, 0))
 
                     Image(systemName: "plus")
-                }
+                }.padding(.top,3)
 
 
                 switch viewModel.tabSelection {
