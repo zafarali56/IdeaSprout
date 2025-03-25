@@ -16,10 +16,9 @@ struct detailView: View {
         self.index = index
     }
     var body: some View {
-        
         ScrollView(content: {
-            VStack(alignment: .leading ,spacing: 25,content: {
-                ZStack(alignment:.leading, content: {
+            VStack(alignment: .leading ,spacing: 15,content: {
+                ZStack(alignment:.topLeading, content: {
                     ZStack(alignment: .bottomTrailing, content: {
                         Image(viewModel.items[index].imageName)
                             .resizable()
@@ -36,7 +35,7 @@ struct detailView: View {
                         detailedCircleView(image: "chevron.backward", dimesions: 50)
                         
                     })
-                    .padding()
+                    .padding(4)
                 })
                 HStack(spacing: 25,content: {
                     Image(systemName: "heart")
@@ -52,7 +51,6 @@ struct detailView: View {
                             .background(.red)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     })
-                   
                 })
                 HStack(content: {
                     Image(systemName: "person.crop.circle")
