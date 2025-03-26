@@ -15,8 +15,33 @@ struct accountView: View {
                 profileView()
                 Text("Settings")
                     .font(.subheadline)
+                ForEach(settingOption.allCases) {option in
+                    settingsOption(title: option.title)
+                    
+                }
+                Text("Login")
+                    .font(.subheadline)
+                ForEach(logginOption.allCases, id: \.id) { option in
+                    if option != .logout {
+                        settingsOption(title: option.title, imageName: "arrow.up.right")
+                    } else {
+                        settingsOption(title: option.title)
+                    }
+                }
+
+                Text("Support")
+                    .font(.subheadline)
+                ForEach(supportOption.allCases, id: \.id) { option in
+                    if option != .about {
+                        settingsOption(title: option.title, imageName: "arrow.up.right")
+                    } else {
+                        settingsOption(title: option.title)
+                    }
+                }
+            
+                
             })
-            .padding(.horizontal)
+            .padding()
         })
         .toolbar{
             ToolbarItem(placement: .topBarLeading,content: {
@@ -59,6 +84,21 @@ struct profileView: View {
                     .font(.subheadline)
             })
             Spacer()
+        })
+    }
+}
+
+struct settingsOption: View {
+    var title : String
+    var imageName: String = "chevron.right"
+    var body: some View {
+        HStack(content: {
+            Text(title)
+                .font(.headline)
+                .fontWeight(.semibold)
+            Spacer()
+            Image(systemName:imageName)
+                .fontWeight(.bold)
         })
     }
 }
