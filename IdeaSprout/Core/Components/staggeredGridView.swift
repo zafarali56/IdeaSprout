@@ -7,15 +7,17 @@
 
 import SwiftUI
 
-struct staggeredGridView: View {
-    private var items: [Item]
+struct staggeredGridView<Content: View,T: Identifiable>: View where T: Hashable{
+    private var items: [T]
     private var columns : Int
-    init(items: [Item], columns: Int) {
+    private var content: (T) -> Content
+    init(items: [T], columns: Int, @ViewBuilder content: @escaping (T) -> Content) {
         self.items = items
         self.columns = columns
+        self.content = content
     }
-    func setupList()->[[Item]]{
-        var gridArray : [[Item]] = Array(repeating: [], count: columns)
+    func setupList()->[[T]]{
+        var gridArray : [[T]] = Array(repeating: [], count: columns)
         
         var currentIndex : Int = 0
         for item in items {
@@ -35,18 +37,8 @@ struct staggeredGridView: View {
                 ForEach(setupList(), id: \.self, content: {columnData in
                     LazyVStack(spacing: 5, content: {
                         ForEach((columnData), content: {item in
-                            VStack(alignment: .trailing, content: {
-                                Image(item.imageName)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(maxWidth: .infinity)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                Image(systemName: "ellipsis")
-                                
-                                    .imageScale(.large)
-                                    .padding(.vertical,2)
-                                
-                            })
+                            
+                            content(item)
                         })
                     })
                 })
@@ -69,5 +61,28 @@ struct staggeredGridView: View {
         .init(id: UUID().uuidString, item_Name: "avenger endgame", isSelected: false, imageName: "post9"),
         
     ]
-    staggeredGridView(items: items, columns: 2)
+    staggeredGridView(items: items, columns: 2){ item in
+        itemCard(item: item)
+    }
 }
+
+
+struct itemCard : View {
+    private var item: Item
+    init(item: Item) {
+        self.item = item
+    }
+    var body: some View {
+        VStack(alignment: .trailing, content: {
+            Image(item.imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(maxWidth: .infinity)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+            Image(systemName: "ellipsis")
+            
+                .imageScale(.large)
+                .padding(.vertical,2)
+        })
+    }}
+            
