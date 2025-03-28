@@ -81,7 +81,13 @@ struct savedView: View {
                         }
                        
                     case .board:
-                        boardView(viewModel: viewModel)
+                        if viewModel.boardWithPins.count == 0 {
+                            emptyBoardView(viewModel: viewModel)
+                        }
+                        else {
+                            boardView(viewModel: viewModel)
+
+                        }
                     }
                     Spacer()
                 })

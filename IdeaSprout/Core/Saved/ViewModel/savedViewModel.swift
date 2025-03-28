@@ -34,4 +34,6 @@ class savedViewModel{
 //    ]
     
     var items : [Item] = []
+    var boardWithPins : [(Board, [Item])] = []
+    
 }
