@@ -71,9 +71,15 @@ struct savedView: View {
                     
                     switch viewModel.tabSelection {
                     case .pin:
-                        staggeredGridView(items: viewModel.items, columns: 3){item in
-                            itemCard(item: item)}
-                            .padding()
+                        if viewModel.items.count == 0 {
+                            emptyPinView(viewModel: viewModel)
+                        }
+                        else {
+                            staggeredGridView(items: viewModel.items, columns: 3){item in
+                                itemCard(item: item)}
+                                .padding()
+                        }
+                       
                     case .board:
                         boardView(viewModel: viewModel)
                     }
