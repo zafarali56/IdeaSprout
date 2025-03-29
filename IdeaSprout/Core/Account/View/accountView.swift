@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 struct accountView: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
@@ -17,7 +16,6 @@ struct accountView: View {
                     .font(.subheadline)
                 ForEach(settingOption.allCases) {option in
                     settingsOption(title: option.title)
-                    
                 }
                 Text("Login")
                     .font(.subheadline)
@@ -28,7 +26,6 @@ struct accountView: View {
                         settingsOption(title: option.title)
                     }
                 }
-
                 Text("Support")
                     .font(.subheadline)
                 ForEach(supportOption.allCases, id: \.id) { option in
@@ -38,8 +35,6 @@ struct accountView: View {
                         settingsOption(title: option.title)
                     }
                 }
-            
-                
             })
             .padding()
         })
