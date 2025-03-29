@@ -14,7 +14,8 @@ struct loginView: View {
         NavigationStack{
             ZStack(content: {
                 LinearGradient(colors: [.white,.blue], startPoint: .bottom, endPoint: .top)
-            }) .ignoresSafeArea()
+            })
+            .ignoresSafeArea()
             GeometryReader{proxy in
                 
                 
@@ -36,9 +37,25 @@ struct loginView: View {
                     Button(action: {}, label: {
                         loginButton(color: .gray.opacity(0.5), width:  proxy.size.width * 0.8, title: "Continue with Google", imageName: "google", foregroundColor: .black)
                     })
+                    Spacer()
+                    Text("By continuing, you agree to Meme world's")
+                        .font(.footnote)
+                    +
+                    Text("Terms of services ")
+                        .font(.footnote)
+                        .foregroundStyle(.blue)
+                        .fontWeight(.bold)
+                    +
+                    Text("and acknowledge that you've read our ")
+                    +
+                    Text("privacy policy. Notice at collection")
+                        .font(.footnote)
+                        .foregroundStyle(.blue)
+                        .fontWeight(.bold)
                     
                 })
-            }
+                
+            }.padding(.horizontal)
         }
     }
 }
