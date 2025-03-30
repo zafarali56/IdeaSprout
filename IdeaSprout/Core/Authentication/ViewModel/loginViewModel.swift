@@ -11,4 +11,6 @@ import Observation
 @Observable
 class loginViewModel{
     var email: String = ""
+    var showSingInView : Bool = false
+    
 }

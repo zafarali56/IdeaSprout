@@ -34,7 +34,7 @@ struct loginView: View {
                     Button(action: {}, label: {
                         loginButton(color: .blue, width:  proxy.size.width * 0.8, title: "Continue with Facebook", imageName: "facebook", foregroundColor: .white)
                     })
-                    Button(action: {}, label: {
+                    Button(action: {viewModel.showSingInView.toggle()}, label: {
                         loginButton(color: .gray.opacity(0.5), width:  proxy.size.width * 0.8, title: "Continue with Google", imageName: "google", foregroundColor: .black)
                     })
                     Spacer()
@@ -56,6 +56,9 @@ struct loginView: View {
                 })
                 
             }.padding(.horizontal)
+                .fullScreenCover(isPresented: $viewModel.showSingInView, content: {
+                    signInView(viewModel: viewModel)
+                })
         }
     }
 }
