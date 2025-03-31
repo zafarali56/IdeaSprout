@@ -12,5 +12,6 @@ import Observation
 class loginViewModel{
     var email: String = ""
     var showSingInView : Bool = false
-    
+    var isSecureField : Bool = true
+    var password : String = ""
 }

@@ -42,7 +42,7 @@ struct staggeredGridView<Content: View,T: Identifiable>: View where T: Hashable{
                         })
                     })
                 })
-            })
+            }).padding(.horizontal)
         }).scrollIndicators(.hidden)
         
     }
