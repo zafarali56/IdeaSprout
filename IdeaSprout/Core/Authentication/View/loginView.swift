@@ -25,19 +25,22 @@ struct loginView: View {
                         .fontDesign(.rounded)
                         .fontWeight(.semibold)
                     TextField("Email adress", text: $viewModel.email)
-                        .textFieldStyle(.roundedBorder)
-                        .padding(.horizontal,40)
+                        .EmailModifier()
+
                     
-                    Button(action: {}, label: {
+                    Button(action: {
+                        
+                    }, label: {
                         loginButton(color: .red, width:  proxy.size.width * 0.8, title: "Continue", imageName: "", foregroundColor: .white )
                     })
                     Button(action: {}, label: {
                         loginButton(color: .blue, width:  proxy.size.width * 0.8, title: "Continue with Facebook", imageName: "facebook", foregroundColor: .white)
                     })
-                    Button(action: {}, label: {
+                    Button(action: {viewModel.showSingInView.toggle()}, label: {
                         loginButton(color: .gray.opacity(0.5), width:  proxy.size.width * 0.8, title: "Continue with Google", imageName: "google", foregroundColor: .black)
                     })
                     Spacer()
+
                     Text("By continuing, you agree to Meme world's")
                         .font(.footnote)
                     +
@@ -54,8 +57,12 @@ struct loginView: View {
                         .fontWeight(.bold)
                     
                 })
+
                 
             }.padding(.horizontal)
+                .fullScreenCover(isPresented: $viewModel.showSingInView, content: {
+                    signInView(viewModel: viewModel)
+                })
         }
     }
 }
