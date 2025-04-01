@@ -29,14 +29,22 @@ struct loginView: View {
 
                     
                     Button(action: {
-                        
+                        Task(operation: {
+                            if try await viewModel.checkEmailExists(){
+                                viewModel.showSingInView.toggle()
+                            }
+                            else{
+                                viewModel.showAddPassword.toggle()
+                            }
+                        })
+                       
                     }, label: {
                         loginButton(color: .red, width:  proxy.size.width * 0.8, title: "Continue", imageName: "", foregroundColor: .white )
                     })
                     Button(action: {}, label: {
                         loginButton(color: .blue, width:  proxy.size.width * 0.8, title: "Continue with Facebook", imageName: "facebook", foregroundColor: .white)
                     })
-                    Button(action: {viewModel.showSingInView.toggle()}, label: {
+                    Button(action: {}, label: {
                         loginButton(color: .gray.opacity(0.5), width:  proxy.size.width * 0.8, title: "Continue with Google", imageName: "google", foregroundColor: .black)
                     })
                     Spacer()
@@ -62,7 +70,13 @@ struct loginView: View {
             }.padding(.horizontal)
                 .fullScreenCover(isPresented: $viewModel.showSingInView, content: {
                     signInView(viewModel: viewModel)
+
                 })
+                .navigationDestination(isPresented: $viewModel.showAddPassword, destination: {
+                    addPasswordView(viewModel: viewModel)
+                        .navigationBarBackButtonHidden()
+                })
+                
         }
     }
 }

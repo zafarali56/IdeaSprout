@@ -12,6 +12,11 @@ import Observation
 class loginViewModel{
     var email: String = ""
     var showSingInView : Bool = false
+    var showAddPassword: Bool = false
     var isSecureField : Bool = true
     var password : String = ""
+    
+    func checkEmailExists() async throws -> Bool{
+        return false
+    }
 }
