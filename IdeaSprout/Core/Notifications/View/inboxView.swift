@@ -13,14 +13,16 @@ struct inboxView: View {
         self._viewModel = Bindable(wrappedValue: viewModel)
     }
     var body: some View {
-        VStack(alignment: .leading, content: {
+        ScrollView(content: {
+            VStack(alignment: .leading,content: {
             searchBarView(searchTerm: $viewModel.searchTerm, showImageIcon: false, title: "Search for ideas")
             inboxCell(title: "New message", imageName: "pencil.circle.fill")
             inboxCell(title: "Invite friends", imageName: "person.crop.circle.fill.badge.plus", subtitle: "Connect to start chatting")
             Spacer()
         }).padding()
-        
+        })
     }
+                  
 }
 
 #Preview {

@@ -14,7 +14,7 @@ struct savedView: View {
         NavigationStack{
             GeometryReader { proxy in
                 VStack(content: {
-                    HStack(spacing: 20,content: {
+                    HStack(spacing: 10,content: {
                         NavigationLink(destination: {
                             accountView()
                                 .navigationBarBackButtonHidden()
