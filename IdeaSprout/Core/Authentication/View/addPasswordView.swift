@@ -28,7 +28,8 @@ struct addPasswordView: View {
                 
                 Spacer()
                 NavigationLink(destination: {
-                    
+                    addNameView(viewModel: viewModel)
+                        .navigationBarBackButtonHidden()
                 }, label: {
                     Text("Next")
                         .font(.headline)

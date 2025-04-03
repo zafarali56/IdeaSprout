@@ -36,20 +36,22 @@ struct accountView: View {
                     }
                 }
             })
-            .padding()
-        })
-        .toolbar{
-            ToolbarItem(placement: .topBarLeading,content: {
-                Button(action: {dismiss()}, label: {
-                    Image(systemName: "chevron.left")
-                        .fontWeight(.bold)
-                        .foregroundStyle(Color(.darkGray))
+            .padding(.horizontal)
+            .toolbar{
+                ToolbarItem(placement: .topBarLeading,content: {
+                    Button(action: {dismiss()}, label: {
+                        Image(systemName: "chevron.left")
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color(.darkGray))
+                    })
                 })
-            })
-            ToolbarItem(placement: .principal, content: {
-                Text("My account")
-            })
-        }
+                ToolbarItem(placement: .principal, content: {
+                    Text("My account")
+                })
+            }
+
+        })
+
         
     }
 }
@@ -78,7 +80,7 @@ struct profileView: View {
                 Text("View profile")
                     .font(.subheadline)
             })
-            Spacer()
+
         })
     }
 }

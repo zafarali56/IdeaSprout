@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct indicatorView: View {
- 
-  
-        var numberOfScreen : Int
+       var numberOfScreen : Int
         var body: some View {
             HStack(content: {
                 ForEach(0..<numberOfScreen, id: \.self){_ in
@@ -23,11 +21,10 @@ struct indicatorView: View {
                         Circle()
                             .fill(Color(.gray))
                             .frame(width: 8, height: 8)
-                        
-                    }
-                }
-            })
-        }
+               }
+            }
+        })
+    }
 }
 
 #Preview {    indicatorView(numberOfScreen: 1)

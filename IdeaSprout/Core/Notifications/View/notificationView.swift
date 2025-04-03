@@ -10,13 +10,13 @@ import SwiftUI
 struct notificationView: View {
     @State private var viewModel = notificationViewModel()
     var body: some View {
-        VStack(spacing: 30, content: {
+        VStack(spacing: 5, content: {
             HStack(spacing: 30 ,content: {
                 Button(action: {viewModel.tabSelection = .Update}, label: {
                     tabSelectionView(title: "Update", width:70, viewModel: viewModel, tabSelection: .Update)
                 })
                 Button(action: {viewModel.tabSelection = .Inbox}, label: {
-                    tabSelectionView(title: "Inbox", width: 30, viewModel: viewModel, tabSelection: .Inbox)
+                    tabSelectionView(title: "Inbox", width: 50, viewModel: viewModel, tabSelection: .Inbox)
                 })
             })
             switch viewModel.tabSelection{
@@ -27,7 +27,7 @@ struct notificationView: View {
             }
             Spacer()
         })
-        
+    
     }
 }
 
@@ -53,7 +53,7 @@ struct tabSelectionView: View {
                 .fontWeight(.semibold)
                 .foregroundStyle(Color(.darkGray))
             Rectangle()
-                .frame(width: width, height: 4)
+                .frame(width: width, height: 5)
                 .foregroundStyle(viewModel.tabSelection == tabSelection ? Color(.red) : .clear)
         })
     }
