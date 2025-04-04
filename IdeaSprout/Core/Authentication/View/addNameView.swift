@@ -27,10 +27,9 @@ struct addNameView: View {
                         .frame(width: proxy.size.width * 0.8)
                 Spacer()
                 })
-                
+
                 Spacer()
-                
-                NavigationLink(destination: {}, label: {
+                NavigationLink(destination: {addAgeView(viewModel: viewModel).navigationBarBackButtonHidden()}, label: {
                     Text("Next")
                         .frame(width: proxy.size.width * 0.9, height: 60)
                         .foregroundStyle(viewModel.fullName.count < 3 ? .black : .white)
@@ -38,11 +37,7 @@ struct addNameView: View {
                         .fontWeight(.semibold)
                         .background(viewModel.fullName.count < 3 ? Color(.systemGray5) : .red)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
- 
-                     
-                    
-                })
-                
+               }).padding(.bottom)
             }).toolbar{
                 ToolbarItem(placement: .topBarLeading, content: {
                     Image(systemName: "chevron.left")

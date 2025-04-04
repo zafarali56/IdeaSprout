@@ -16,6 +16,8 @@ class loginViewModel{
     var isSecureField : Bool = true
     var password : String = ""
     var fullName: String = ""
+    var birthDate: String = ""
+    var isPresented : Bool = true
     func checkEmailExists() async throws -> Bool{
         return false
     }

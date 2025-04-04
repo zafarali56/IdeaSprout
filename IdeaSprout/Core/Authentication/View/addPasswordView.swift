@@ -35,7 +35,7 @@ struct addPasswordView: View {
                         .font(.headline)
                         .fontWeight(.semibold)
                         .frame(width: proxy.size.width * 0.9, height: 60)
-                        .background(viewModel.password.count < 6 ? Color(.systemGray) : Color(.red))
+                        .background(viewModel.password.count < 6 ? Color(.systemGray5) : Color(.red))
                         .foregroundStyle(viewModel.password.count < 6 ? .black : .white)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                         .padding(.bottom)
