@@ -11,7 +11,7 @@ struct indicatorView: View {
        var numberOfScreen : Int
         var body: some View {
             HStack(content: {
-                ForEach(0..<numberOfScreen, id: \.self){_ in
+                ForEach(0..<6-numberOfScreen, id: \.self){_ in
                 Circle().fill(Color(.darkGray))
                     .frame(width: 8, height: 8)
                 Circle()

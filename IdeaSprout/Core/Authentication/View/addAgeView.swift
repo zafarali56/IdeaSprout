@@ -34,7 +34,7 @@ struct addAgeView: View {
                         .foregroundStyle(.gray)
                         .font(.subheadline)
                     Spacer()
-                    NavigationLink(destination: {}, label: {
+                    NavigationLink(destination: {addGenderView(viewModel: viewModel).navigationBarBackButtonHidden()}, label: {
                         Text("Next")
                             .frame(width: proxy.size.width * 0.9, height: 60)
                             .foregroundStyle(viewModel.birthDate.count < 3 ? .black : .white)
