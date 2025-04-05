@@ -10,6 +10,7 @@ import Observation
 
 @Observable
 class loginViewModel{
+    var gender: String = ""
     var email: String = ""
     var showSingInView : Bool = false
     var showAddPassword: Bool = false
@@ -22,6 +23,7 @@ class loginViewModel{
     var tempDate : Date = Date()
     let calender = Calendar.current
     let month = Calendar.current.shortMonthSymbols
+    var isNavigationActive : Bool = false
     var availableYears : [Int] {
         Array((1900...2025)).reversed()
     }
