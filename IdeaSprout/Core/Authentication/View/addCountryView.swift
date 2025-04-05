@@ -21,18 +21,22 @@ struct addCountryView: View {
                     .fontWeight(.semibold)
                 Text("This helps us find you more relevant content, we wont' show on your profile.")
                     .multilineTextAlignment(.center)
-                TextField("Country", text: $viewModel.country)
-                    .EmailModifier()
-                    .disabled(true)
-                    .overlay(alignment: .trailing, content: {
-                        Image(systemName: "chevron.right")
-                            .foregroundStyle(.gray)
-                            .padding(.trailing)
+                ZStack(content: {
+                    TextField("Country", text: $viewModel.country)
+                        .EmailModifier()
+                        .disabled(true)
+                        .overlay(alignment: .trailing, content: {
+                            Image(systemName: "chevron.right")
+                                .foregroundStyle(.gray)
+                                .padding(.trailing)
+                        })
+                    Button(action: {viewModel.showCountryList.toggle()}, label: {
+                        Rectangle().fill(.clear)
+                            .frame(width: proxy.size.width * 0.9, height: 44)
                     })
-                 
-                    .onTapGesture {
-                        viewModel.showCountryList = true
-                    }
+                        
+                })
+                
                 
 
                 Spacer()
@@ -48,7 +52,7 @@ struct addCountryView: View {
             })
             .padding()
             .fullScreenCover(isPresented: $viewModel.showCountryList, content: {
-                Text("Country list")
+                listCountryView(viewModel: viewModel)
             })
             .toolbar{
                 ToolbarItem(placement: .topBarLeading, content: {
