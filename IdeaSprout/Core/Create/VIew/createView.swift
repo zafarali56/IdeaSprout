@@ -32,7 +32,6 @@ struct createView: View {
                             }label: {
                                 createOptionView(title: "Board", icon: "square.grid.2x2.fill")
                             }
-                            
                         }
                        Spacer()
                     }
