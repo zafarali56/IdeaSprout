@@ -39,7 +39,8 @@ struct addGenderView: View {
                 
             })
             .navigationDestination(isPresented: $viewModel.isNavigationActive, destination: {
-                Text("Country view")
+                addCountryView(viewModel: viewModel)
+                    .navigationBarBackButtonHidden()
             })
             .padding()
             .toolbar{

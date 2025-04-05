@@ -24,6 +24,8 @@ class loginViewModel{
     let calender = Calendar.current
     let month = Calendar.current.shortMonthSymbols
     var isNavigationActive : Bool = false
+    var country: String = "Pakistan"
+    var showCountryList : Bool = false
     var availableYears : [Int] {
         Array((1900...2025)).reversed()
     }
