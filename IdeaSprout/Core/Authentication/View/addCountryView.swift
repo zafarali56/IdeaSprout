@@ -40,7 +40,7 @@ struct addCountryView: View {
                 
 
                 Spacer()
-                NavigationLink(destination: {}, label: {
+                NavigationLink(destination: {interestView(viewModel: viewModel)}, label: {
                     Text("Next")
                         .frame(width: proxy.size.width * 0.9, height: 60)
                         .foregroundStyle(.white)

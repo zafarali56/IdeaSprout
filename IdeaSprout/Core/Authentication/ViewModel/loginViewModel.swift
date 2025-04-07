@@ -5,7 +5,7 @@
 //  Created by Zafar ‎ on 29/03/2025.
 //
 
-import Foundation
+import SwiftUI
 import Observation
 
 @Observable
@@ -26,6 +26,24 @@ class loginViewModel{
     var isNavigationActive : Bool = false
     var country: String = "Pakistan"
     var showCountryList : Bool = false
+    var interest: [interests] = [
+        interests(id: UUID().uuidString, itemName: "Anime", imageName: "anime", isSelected: false),
+        interests(id: UUID().uuidString, itemName: "Anime", imageName: "anime", isSelected: false),
+        interests(id: UUID().uuidString, itemName: "Anime", imageName: "anime", isSelected: false),
+        interests(id: UUID().uuidString, itemName: "Anime", imageName: "anime", isSelected: false),
+        interests(id: UUID().uuidString, itemName: "Anime", imageName: "anime", isSelected: false),
+        interests(id: UUID().uuidString, itemName: "Anime", imageName: "anime", isSelected: false)
+    ]
+    
+    let gridItems: [GridItem] = [
+         
+        .init(.flexible(),spacing: 1),
+        .init(.flexible(),spacing: 1),
+        .init(.flexible(),spacing: 1),
+     ]
+    var isSelectedInterests: [interests] = []
+   
+    
     var availableYears : [Int] {
         Array((1900...2025)).reversed()
     }
@@ -53,4 +71,5 @@ class loginViewModel{
             month: calender.component(.month, from: tempDate),
             day:calender.component(.day, from: tempDate))) ?? Date()
     }
+    
 }
