@@ -15,6 +15,10 @@ struct createView: View {
         if viewModel.showCreateBoard{
         createBoardView(viewModel: viewModel)
         }
+        else if viewModel.showFullScreenPhotoGallery{
+            fullScreenPhotoGalleryView(viewModel: viewModel)
+        
+        }
         else {
             VStack {
                 NavigationStack{
@@ -24,7 +28,12 @@ struct createView: View {
                             .fontWeight(.semibold)
                         HStack(spacing: 50)
                         {
-                            createOptionView(title: "Pin", icon: "pin.fill")
+                            Button(action: {viewModel.showFullScreenPhotoGallery = true
+                                isFullScreen = true
+                            }, label: {
+                                createOptionView(title: "Pin", icon: "pin.fill")
+                            })
+               
                             createOptionView(title: "College", icon: "scissors")
                             Button {
                                 viewModel.showCreateBoard = true

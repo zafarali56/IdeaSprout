@@ -10,9 +10,22 @@
 		1CAB36482D7CBD0900AAFCA2 /* IdeaSprout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeaSprout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1C2D85642DA5A4D900814A60 /* Exceptions for "IdeaSprout" folder in "IdeaSprout" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 1CAB36472D7CBD0900AAFCA2 /* IdeaSprout */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1CAB364A2D7CBD0900AAFCA2 /* IdeaSprout */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1C2D85642DA5A4D900814A60 /* Exceptions for "IdeaSprout" folder in "IdeaSprout" target */,
+			);
 			path = IdeaSprout;
 			sourceTree = "<group>";
 		};
@@ -256,7 +269,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"IdeaSprout/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IdeaSprout/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sproutia;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "The app need access to photos to create pins";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -286,7 +301,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"IdeaSprout/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IdeaSprout/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sproutia;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "The app need access to photos to create pins";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
