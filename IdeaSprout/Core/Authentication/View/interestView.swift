@@ -87,13 +87,12 @@ struct interestView: View {
                             dismiss()
                         }
                 }
-                
                 ToolbarItem(placement: .principal) {
                     indicatorView(numberOfScreen: 5)
                 }
             }
-            .navigationTitle("")
-            .navigationBarTitleDisplayMode(.inline)
+
+
         }
         
     }
