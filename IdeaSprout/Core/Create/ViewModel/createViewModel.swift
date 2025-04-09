@@ -9,8 +9,6 @@
 import Observation
 import SwiftUI
 import Photos
-
-
 @Observable
 class createViewModel {
     var showCreateBoard : Bool = false
@@ -24,7 +22,7 @@ class createViewModel {
                         .init(id: UUID().uuidString, item_Name: "Quagmire", isSelected: false, imageName: "baldmire"),
                         .init(id: UUID().uuidString, item_Name: "Family guy", isSelected: false, imageName: "peta"),
                         .init(id: UUID().uuidString, item_Name: "Tom & jerry", isSelected: false, imageName: "hungrytom")]
-    
+   
     
     var tabs = ["All", "Videos", "Photos"]
     var gridItems = [

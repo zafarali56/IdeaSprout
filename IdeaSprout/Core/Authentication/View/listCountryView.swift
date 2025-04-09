@@ -29,8 +29,7 @@ struct listCountryView: View {
                                 .onTapGesture {
                                     viewModel.country = countryName
                                     dismiss()
-                                }
-                            
+                            }
                         }
                     }
                 })
@@ -45,9 +44,9 @@ struct listCountryView: View {
                                     dismiss()
                                 }
                             Text("Country/Region")
-                        })
                     })
-                }
+                })
+            }
         }
     }
 }
