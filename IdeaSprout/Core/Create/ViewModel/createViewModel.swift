@@ -42,7 +42,7 @@ class createViewModel {
     }
     private func fetechPhoto () {
         let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "Creations Date", ascending: false)]
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         var fetchResult : PHFetchResult<PHAsset>
         switch isSelectedTab {
         case "Videos":
