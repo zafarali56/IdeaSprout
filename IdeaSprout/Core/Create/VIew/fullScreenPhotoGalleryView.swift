@@ -80,6 +80,7 @@ struct photoThumbnailView : View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: size, height: size)
                     .clipped()
+                    .padding()
             }
         })
         .onAppear{
