@@ -47,6 +47,7 @@ struct fullScreenPhotoGalleryView: View {
                             
                         }).onTapGesture {
                             viewModel.isSelectedTab = tab
+                            viewModel.fetechPhoto()
                         }
                     }
                 })
@@ -73,15 +74,18 @@ struct photoThumbnailView : View {
     @State private var image: UIImage?
     private let imageManager = PHCachingImageManager()
     var body: some View {
-        ZStack( content: {
+        ZStack(alignment: .topTrailing, content: {
             if let image = image {
                 Image(uiImage: image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: size, height: size)
                     .clipped()
-                    .padding()
             }
+            Image(systemName: "checkmark.circle.fill")
+                .foregroundStyle(.blue)
+                .background(Circle().fill(Color.white))
+                .padding(4)
         })
         .onAppear{
             loadImage()
