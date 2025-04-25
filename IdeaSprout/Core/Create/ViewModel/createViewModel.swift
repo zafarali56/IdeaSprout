@@ -30,6 +30,11 @@ class createViewModel {
         GridItem(.flexible(), spacing: 1),
         GridItem(.flexible(), spacing: 1)
     ]
+    var tag : String = ""
+    var selectedBoard : String = "Profile"
+    var title: String = ""
+    var description : String = ""
+    var link: String = ""
     var photoAssests: [PHAsset] = []
     var selectedPhotos: Set<String> = []
     func photoPermission () {
