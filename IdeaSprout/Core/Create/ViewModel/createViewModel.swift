@@ -31,6 +31,7 @@ class createViewModel {
         GridItem(.flexible(), spacing: 1)
     ]
     var photoAssests: [PHAsset] = []
+    var selectedPhotos: Set<String> = []
     func photoPermission () {
         PHPhotoLibrary.requestAuthorization(for: .readWrite){ status in
             DispatchQueue.main.async{
@@ -40,7 +41,7 @@ class createViewModel {
             }
         }
     }
-    private func fetechPhoto () {
+    func fetechPhoto () {
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         var fetchResult : PHFetchResult<PHAsset>
