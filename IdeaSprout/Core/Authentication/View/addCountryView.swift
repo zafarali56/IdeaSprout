@@ -36,9 +36,6 @@ struct addCountryView: View {
                     })
                         
                 })
-                
-                
-
                 Spacer()
                 NavigationLink(destination: {interestView(viewModel: viewModel)}, label: {
                     Text("Next")
