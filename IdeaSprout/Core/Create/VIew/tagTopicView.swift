@@ -34,7 +34,7 @@ struct tagTopicView: View {
                     LazyVGrid(columns: viewModel.topicGridItem, spacing: 8) {
                         ForEach(viewModel.displayTopics, id: \.self) { topic in
                             TopicButton(topic: topic, isSelected: viewModel.selectedTopics.contains(topic)) {
-                                // your button action goes here
+                                viewModel.toggleSelection(topic)
                             }
                         }
                     }
@@ -91,7 +91,7 @@ private struct TopicButton: View {
                 .frame(maxWidth: .infinity)
                 .background(isSelected ? Color.black : Color(.systemGray4))
                 .foregroundStyle(isSelected ? .white : Color(.darkGray))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .clipShape(RoundedRectangle(cornerRadius: 30))
         }
     }
 }

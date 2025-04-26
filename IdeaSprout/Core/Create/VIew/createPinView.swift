@@ -35,7 +35,7 @@ struct createPinView: View {
                     horizontalPinItemView(title: "Pick a board", value: viewModel.selectedBoard)
                         .padding(.vertical)
                     Button(action: {viewModel.showTagTopics = true}, label: {
-                        horizontalPinItemView(title: "Tag topics", value: viewModel.tag)
+                        horizontalPinItemView(title: "Tag topics", value: viewModel.selectedTopics.count > 0 ? "\(viewModel.selectedTopics.count)" : "")
                     })
                    
                     HStack(content: {

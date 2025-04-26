@@ -88,7 +88,8 @@ class createViewModel {
     }
     var showTagTopics : Bool = false
     var tag : String = ""
-    var selectedTopics : Array<String> = []
+    
+    var selectedTopics : Set<String> = []
     var selectedBoard : String = "Profile"
     var title: String = ""
     var description : String = ""
@@ -117,5 +118,12 @@ class createViewModel {
             fetchResult = PHAsset.fetchAssets(with : fetchOptions)
         }
         photoAssests = fetchResult.objects(at: IndexSet(0 ..< fetchResult.count))
+    }
+    func toggleSelection (_ topic : String){
+        if selectedTopics.contains(topic){
+            selectedTopics.remove(topic)
+        }else{
+            selectedTopics.insert(topic)
+        }
     }
 }
