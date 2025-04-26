@@ -49,7 +49,7 @@ struct staggeredGridView<Content: View,T: Identifiable>: View where T: Hashable{
 }
 
 #Preview {
-    var items : [Item] = [
+    let items : [Item] = [
         .init(id: UUID().uuidString, item_Name: "cat meme", isSelected: false, imageName: "post1"),
         .init(id: UUID().uuidString, item_Name: "spongbob", isSelected: false, imageName: "post2"),
         .init(id: UUID().uuidString, item_Name: "chad", isSelected: false, imageName: "post3"),

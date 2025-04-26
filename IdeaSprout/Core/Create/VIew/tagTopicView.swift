@@ -75,7 +75,6 @@ struct tagTopicView: View {
     }
 }
 
-// MARK: - Subview
 
 private struct TopicButton: View {
     let topic: String

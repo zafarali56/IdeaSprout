@@ -88,7 +88,7 @@ class createViewModel {
     }
     var showTagTopics : Bool = false
     var tag : String = ""
-    
+    var boardSheetPresented : Bool = false
     var selectedTopics : Set<String> = []
     var selectedBoard : String = "Profile"
     var title: String = ""
