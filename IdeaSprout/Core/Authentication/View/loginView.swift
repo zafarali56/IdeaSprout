@@ -10,15 +10,12 @@ import SwiftUI
 struct loginView: View {
     @State private var viewModel = loginViewModel()
     var body: some View {
-        
         NavigationStack{
             ZStack(content: {
                 LinearGradient(colors: [.white,.blue], startPoint: .bottom, endPoint: .top)
             })
             .ignoresSafeArea()
             GeometryReader{proxy in
-                
-                
                 VStack(content: {
                     Text("Welcome to Meme World")
                         .font(.title)
@@ -26,9 +23,7 @@ struct loginView: View {
                         .fontWeight(.semibold)
                     TextField("Email adress", text: $viewModel.email)
                         .EmailModifier()
-
-                    
-                    Button(action: {
+                   Button(action: {
                         Task(operation: {
                             if try await viewModel.checkEmailExists(){
                                 viewModel.showSingInView.toggle()
@@ -63,20 +58,15 @@ struct loginView: View {
                         .font(.footnote)
                         .foregroundStyle(.blue)
                         .fontWeight(.bold)
-                    
                 })
-
-                
             }.padding(.horizontal)
                 .fullScreenCover(isPresented: $viewModel.showSingInView, content: {
                     signInView(viewModel: viewModel)
-
                 })
                 .navigationDestination(isPresented: $viewModel.showAddPassword, destination: {
                     addPasswordView(viewModel: viewModel)
                         .navigationBarBackButtonHidden()
                 })
-                
         }
     }
 }

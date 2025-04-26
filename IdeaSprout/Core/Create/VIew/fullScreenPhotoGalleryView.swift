@@ -16,12 +16,9 @@ struct fullScreenPhotoGalleryView: View {
     init(viewModel: createViewModel) {
         self._viewModel = Bindable(wrappedValue: viewModel)
     }
-    
     var body: some View {
         GeometryReader { proxy in
             VStack(spacing: 0) {
-                
-                // MARK: - Header
                 ZStack {
                     HStack {
                         Button(action: {
@@ -43,7 +40,6 @@ struct fullScreenPhotoGalleryView: View {
                 .padding(.horizontal)
                 .padding(.vertical)
                 
-                // MARK: - Tabs
                 GalleryTabBar(
                     tabs: viewModel.tabs,
                     selectedTab: $viewModel.isSelectedTab,
@@ -52,13 +48,12 @@ struct fullScreenPhotoGalleryView: View {
                     }
                 )
                 
-                // MARK: - Photo Grid
                 ScrollView {
-                    LazyVGrid(columns: viewModel.gridItems, spacing: 10) {
+                    LazyVGrid(columns: viewModel.gridItems, spacing: 1) {
                         ForEach(viewModel.photoAssests, id: \.localIdentifier) { asset in
                             photoThumbnailView(
                                 asset: asset,
-                                size: proxy.size.width / 4,
+                                size: proxy.size.width / 3,
                                 isSelected: viewModel.selectedPhotos.contains(asset.localIdentifier)
                             )
                             .onTapGesture {
@@ -75,10 +70,8 @@ struct fullScreenPhotoGalleryView: View {
                 .onAppear {
                     viewModel.photoPermission()
                 }
+                .padding(.top,5)
                 .scrollIndicators(.hidden)
-
-                
-                // MARK: - Selected Photo Bar
                 if !viewModel.selectedPhotos.isEmpty {
                     SelectedPhotoBar(selectedAssest: viewModel.photoAssests.filter {
                         viewModel.selectedPhotos.contains($0.localIdentifier)
@@ -96,7 +89,7 @@ struct GalleryTabBar: View {
     let tabs: [String]
     @Binding var selectedTab: String
     let onTabSelected: (String) -> Void
-
+    
     var body: some View {
         HStack(spacing: 10) {
             ForEach(tabs, id: \.self) { tab in
@@ -129,7 +122,7 @@ struct SelectedPhotoBar : View {
                     }
                 }).padding(.horizontal)
                     .padding(.vertical)
-                    
+                
             })
         })
     }
@@ -158,11 +151,11 @@ struct SelectedphotoThumbnailView : View {
                     .foregroundStyle(.red)
                     .background(Circle().fill(Color.white))
                     .font(.system(size: 18))
-                .padding(5)
+                    .padding(5)
             })
-
-              
-                
+            
+            
+            
         })
         .onAppear{
             loadImage()
@@ -198,14 +191,14 @@ struct photoThumbnailView : View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: size, height: size)
-                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
             }
             if isSelected{
                 Image(systemName: "checkmark.circle.fill")
                     .foregroundStyle(.blue)
                     .background(Circle().fill(Color.white))
                 .padding(5)}
-                
+            
         })
         .onAppear{
             loadImage()
