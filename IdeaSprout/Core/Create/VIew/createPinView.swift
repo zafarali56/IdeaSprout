@@ -31,8 +31,10 @@ struct createPinView: View {
                     pinItemView(text: $viewModel.title, title: "Title", description: "Tell everyone what your pin is about", color: Color(.darkGray))
                                 pinItemView(text: $viewModel.description, title: "Description", description: "Add description, mention or Hash tag", color: .gray)
                                 pinItemView(text: $viewModel.link, title: "Link", description: "Add your link here", color: .gray)
-                    
-                    horizontalPinItemView(title: "Pick a board", value: viewModel.selectedBoard)
+                    Button(action: {viewModel.boardSheetPresented = true}, label: {
+                        horizontalPinItemView(title: "Pick a board", value: viewModel.selectedBoard)
+                    })
+                   
                         .padding(.vertical)
                     Button(action: {viewModel.showTagTopics = true}, label: {
                         horizontalPinItemView(title: "Tag topics", value: viewModel.selectedTopics.count > 0 ? "\(viewModel.selectedTopics.count)" : "")
@@ -56,17 +58,24 @@ struct createPinView: View {
                                 .foregroundStyle(.white)
                              
                                 .clipShape(RoundedRectangle(cornerRadius: 40))
-                            
-                         
+
                         })
                     })
 
+                    
                 })
                 .padding(.horizontal, 10)
                 
             })
             .fullScreenCover(isPresented: $viewModel.showTagTopics, content: {
                 tagTopicView(viewModel: viewModel)
+          
+            })
+            .sheet(isPresented: $viewModel.boardSheetPresented, content: {
+                savedBoardSheet(viewModel: viewModel)
+                    .presentationDragIndicator(.visible)
+                    .presentationDetents([.medium])
+                
             })
             .scrollIndicators(.hidden)
                 .navigationTitle("Create Pin")
