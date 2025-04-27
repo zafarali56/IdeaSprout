@@ -66,7 +66,11 @@ struct interestView: View {
                     }
                 }
                 .scrollIndicators(.hidden)
-                NavigationLink(destination: Text("Next Screen")) {
+                Button(action: {
+                    Task{
+                        try await viewModel.createUser()
+                    }
+                }, label: {
                     Text("Next")
                         .bold()
                         .frame(maxWidth: .infinity)
@@ -74,9 +78,10 @@ struct interestView: View {
                         .background(viewModel.isSelectedInterests.count >= 5 ? Color.red : Color.gray)
                         .foregroundColor(.white)
                         .cornerRadius(20)
-                }
-                .disabled(viewModel.isSelectedInterests.count < 5)
+                })
                 .padding()
+               
+           
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
