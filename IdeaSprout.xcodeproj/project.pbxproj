@@ -6,26 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1C108F342DBDFA510051C3AD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1C108F332DBDFA510051C3AD /* FirebaseAuth */; };
+		1C108F362DBDFA510051C3AD /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1C108F352DBDFA510051C3AD /* FirebaseCore */; };
+		1C108F382DBDFA510051C3AD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1C108F372DBDFA510051C3AD /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		1CAB36482D7CBD0900AAFCA2 /* IdeaSprout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeaSprout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1C2D85642DA5A4D900814A60 /* Exceptions for "IdeaSprout" folder in "IdeaSprout" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 1CAB36472D7CBD0900AAFCA2 /* IdeaSprout */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1CAB364A2D7CBD0900AAFCA2 /* IdeaSprout */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				1C2D85642DA5A4D900814A60 /* Exceptions for "IdeaSprout" folder in "IdeaSprout" target */,
-			);
 			path = IdeaSprout;
 			sourceTree = "<group>";
 		};
@@ -36,6 +29,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C108F362DBDFA510051C3AD /* FirebaseCore in Frameworks */,
+				1C108F342DBDFA510051C3AD /* FirebaseAuth in Frameworks */,
+				1C108F382DBDFA510051C3AD /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +74,9 @@
 			);
 			name = IdeaSprout;
 			packageProductDependencies = (
+				1C108F332DBDFA510051C3AD /* FirebaseAuth */,
+				1C108F352DBDFA510051C3AD /* FirebaseCore */,
+				1C108F372DBDFA510051C3AD /* FirebaseFirestore */,
 			);
 			productName = IdeaSprout;
 			productReference = 1CAB36482D7CBD0900AAFCA2 /* IdeaSprout.app */;
@@ -107,6 +106,9 @@
 			);
 			mainGroup = 1CAB363F2D7CBD0900AAFCA2;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1C108F322DBDFA510051C3AD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1CAB36492D7CBD0900AAFCA2 /* Products */;
 			projectDirPath = "";
@@ -345,6 +347,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1C108F322DBDFA510051C3AD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C108F332DBDFA510051C3AD /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C108F322DBDFA510051C3AD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		1C108F352DBDFA510051C3AD /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C108F322DBDFA510051C3AD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		1C108F372DBDFA510051C3AD /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C108F322DBDFA510051C3AD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1CAB36402D7CBD0900AAFCA2 /* Project object */;
 }
