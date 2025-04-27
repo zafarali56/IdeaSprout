@@ -71,5 +71,8 @@ class loginViewModel{
             month: calender.component(.month, from: tempDate),
             day:calender.component(.day, from: tempDate))) ?? Date()
     }
-    
+    @MainActor
+    func createUser() async throws {
+        try await AuthService.shared.createUser(email: email, password: password, name: fullName, gender: gender, birthDate: birthDate, selectedInterests: isSelectedInterests)
+    }
 }

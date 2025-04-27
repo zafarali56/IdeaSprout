@@ -16,9 +16,22 @@
 		1CAB36482D7CBD0900AAFCA2 /* IdeaSprout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeaSprout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1CCA1FB22DBEB4CA003B5389 /* Exceptions for "IdeaSprout" folder in "IdeaSprout" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 1CAB36472D7CBD0900AAFCA2 /* IdeaSprout */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1CAB364A2D7CBD0900AAFCA2 /* IdeaSprout */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1CCA1FB22DBEB4CA003B5389 /* Exceptions for "IdeaSprout" folder in "IdeaSprout" target */,
+			);
 			path = IdeaSprout;
 			sourceTree = "<group>";
 		};
