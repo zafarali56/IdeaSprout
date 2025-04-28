@@ -8,6 +8,7 @@
 import SwiftUI
 struct accountView: View {
     @Environment(\.dismiss) private var dismiss
+	@State private var viewModel = accountViewModel()
     var body: some View {
         ScrollView(content: {
             VStack(alignment: .leading, spacing: 20,content: {
@@ -23,7 +24,12 @@ struct accountView: View {
                     if option != .logout {
                         settingsOption(title: option.title, imageName: "arrow.up.right")
                     } else {
-                        settingsOption(title: option.title)
+						Button(action: {
+							viewModel.signOut()
+						}, label: {
+							settingsOption(title: option.title)
+						})
+                        
                     }
                 }
                 Text("Support")

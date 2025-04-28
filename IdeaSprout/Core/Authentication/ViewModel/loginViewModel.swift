@@ -48,7 +48,7 @@ class loginViewModel{
         Array((1900...2025)).reversed()
     }
     func checkEmailExists() async throws -> Bool{
-        return false
+		return await AuthService.shared.checkIfEmailExists(email: email)
     }
    
     func dayComponent (day: Int)-> Date{

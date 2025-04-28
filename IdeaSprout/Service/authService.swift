@@ -9,9 +9,10 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 import Firebase
+import Observation
 
 
-
+@Observable
 class AuthService{
     static let shared  = AuthService()
     var userSession: FirebaseAuth.User?
@@ -42,4 +43,20 @@ class AuthService{
         }
         try await Firestore.firestore().collection("users").document(id).setData(userData)
     }
+	
+	func signOut (){
+		try? Auth.auth().signOut()
+		self.userSession = nil
+	}
+	
+	func checkIfEmailExists (email: String) async -> Bool {
+		do {
+			let querySnapShot = try await Firestore.firestore().collection("users").whereField("email", isEqualTo: email).getDocuments()
+			
+			return !querySnapShot.isEmpty
+		} catch {
+			print("error \(error.localizedDescription)")
+			return false
+		}
+	}
 }
