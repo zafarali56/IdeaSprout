@@ -44,8 +44,13 @@ struct signInView: View {
                     .frame(width: proxy.size.width * 0.7)
                     .padding(.bottom,2)
                 customSecureField(width: proxy.size.width * 0.7, isSecureField: $viewModel.isSecureField, password: $viewModel.password)
-                loginButton(color: .red, width: proxy.size.width * 0.7, title: "Log in", imageName: "", foregroundColor: .white)
-                    .padding(.top,30)
+				
+				Button(
+					action: {Task{
+						try await viewModel.login()
+					}}, label: {loginButton(color: .red, width: proxy.size.width * 0.7, title: "Log in", imageName: "", foregroundColor: .white)
+					.padding(.top,30)})
+                
                 
                 Text("Forgotten password?")
                     .padding(.top)

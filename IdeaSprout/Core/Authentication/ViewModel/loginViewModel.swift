@@ -75,4 +75,8 @@ class loginViewModel{
     func createUser() async throws {
         try await AuthService.shared.createUser(email: email, password: password, name: fullName, gender: gender, birthDate: birthDate, selectedInterests: isSelectedInterests)
     }
+	@MainActor
+	func login() async throws {
+		try await AuthService.shared.login(email: email, password: password)
+	}
 }
