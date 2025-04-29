@@ -39,7 +39,9 @@ struct loginView: View {
                     Button(action: {}, label: {
                         loginButton(color: .blue, width:  proxy.size.width * 0.8, title: "Continue with Facebook", imageName: "facebook", foregroundColor: .white)
                     })
-                    Button(action: {}, label: {
+					Button(action: {Task {
+						try await viewModel.siginGoogle()
+					}}, label: {
                         loginButton(color: .gray.opacity(0.5), width:  proxy.size.width * 0.8, title: "Continue with Google", imageName: "google", foregroundColor: .black)
                     })
                     Spacer()
