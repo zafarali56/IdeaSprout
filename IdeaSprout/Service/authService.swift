@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import Firebase
 import Observation
-
+import GoogleSignIn
 
 @Observable
 class AuthService{
@@ -68,6 +68,34 @@ class AuthService{
 			try await userService.shared.fetchCurrentUserData()
 		} catch{
 			print("Failed to login\(error.localizedDescription)")
+		}
+	}
+	
+	
+}
+
+
+
+extension AuthService {
+	func signIn (credentials : AuthCredential) async throws -> User{
+		let authDataResult = try await Auth.auth().signIn(with: credentials)
+		return authDataResult.user
+	}
+	
+	func singInWithGoogle (tokens: GoogleSigninResultModel)async throws{
+		do {
+			let credentials = GoogleAuthProvider.credential(withIDToken: tokens.idToken, accessToken: tokens.accessToken)
+			self.userSession = try await signIn(credentials: credentials)
+			if let email = userSession?.email{
+				if await !checkIfEmailExists(email: email){
+					try await uploadUserData(email: userSession?.email ?? "", id: userSession?.uid ?? UUID().uuidString, name: userSession?.displayName ?? "", gender: "", birthDate: "", selectedInterests: [])
+				}else {
+					try await userService.shared.fetchCurrentUserData()
+				}
+			}
+		}
+		catch{
+			print("Error during google Signin \(error.localizedDescription)")
 		}
 	}
 }

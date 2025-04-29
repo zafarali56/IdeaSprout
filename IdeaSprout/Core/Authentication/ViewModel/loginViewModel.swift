@@ -79,4 +79,8 @@ class loginViewModel{
 	func login() async throws {
 		try await AuthService.shared.login(email: email, password: password)
 	}
+	
+	func siginGoogle () async throws{
+		
+	}
 }
