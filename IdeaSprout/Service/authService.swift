@@ -33,8 +33,6 @@ class AuthService{
             print("failed to create user \(error.localizedDescription)")
         }
     }
-    
-    
     @MainActor
     private func uploadUserData (email: String, id: String, name: String,gender: String, birthDate: String, selectedInterests: [interests]) async throws { let user = UserData(
         id: id, email: email, name: name, gender: gender, birthDate: birthDate, interests: selectedInterests, pins: [], board: [])
@@ -43,13 +41,11 @@ class AuthService{
         }
         try await Firestore.firestore().collection("users").document(id).setData(userData)
     }
-	
 	func signOut (){
 		try? Auth.auth().signOut()
 		self.userSession = nil
 		userService.shared.reset()
 	}
-	
 	func checkIfEmailExists (email: String) async -> Bool {
 		do {
 			let querySnapShot = try await Firestore.firestore().collection("users").whereField("email", isEqualTo: email).getDocuments()
@@ -70,18 +66,12 @@ class AuthService{
 			print("Failed to login\(error.localizedDescription)")
 		}
 	}
-	
-	
 }
-
-
-
 extension AuthService {
 	func signIn (credentials : AuthCredential) async throws -> User{
 		let authDataResult = try await Auth.auth().signIn(with: credentials)
 		return authDataResult.user
 	}
-	
 	func singInWithGoogle (tokens: GoogleSigninResultModel)async throws{
 		do {
 			let credentials = GoogleAuthProvider.credential(withIDToken: tokens.idToken, accessToken: tokens.accessToken)

@@ -19,7 +19,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1CCA1FB22DBEB4CA003B5389 /* Exceptions for "IdeaSprout" folder in "IdeaSprout" target */ = {
+		1C9663892DC2A1B200A9C27D /* Exceptions for "IdeaSprout" folder in "IdeaSprout" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -32,7 +32,7 @@
 		1CAB364A2D7CBD0900AAFCA2 /* IdeaSprout */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				1CCA1FB22DBEB4CA003B5389 /* Exceptions for "IdeaSprout" folder in "IdeaSprout" target */,
+				1C9663892DC2A1B200A9C27D /* Exceptions for "IdeaSprout" folder in "IdeaSprout" target */,
 			);
 			path = IdeaSprout;
 			sourceTree = "<group>";
@@ -296,6 +296,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "The app need access to photos to create pins";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -327,6 +328,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "The app need access to photos to create pins";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

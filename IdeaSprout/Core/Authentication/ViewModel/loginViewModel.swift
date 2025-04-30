@@ -81,6 +81,8 @@ class loginViewModel{
 	}
 	
 	func siginGoogle () async throws{
-		
+		let helper = signInGoogleHelper()
+		let token = try await helper.signIn()
+		try await AuthService.shared.singInWithGoogle(tokens: token)
 	}
 }
