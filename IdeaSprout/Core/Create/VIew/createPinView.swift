@@ -75,7 +75,9 @@ struct createPinView: View {
                         Button(action: {
 							Task{
 								try await viewModel.uploadPin()
+								viewModel.shouldDismissAll = true 
 								dismiss()
+								
 							}
 							
 						}, label: {

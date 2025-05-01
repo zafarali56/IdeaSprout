@@ -67,6 +67,10 @@ struct fullScreenPhotoGalleryView: View {
                         }
                     }
                 }
+				.onChange(of: viewModel.shouldDismissAll, {_, newValue in
+					if newValue {
+						dismiss()
+					}})
                 .onAppear {
                     viewModel.photoPermission()
                 }
