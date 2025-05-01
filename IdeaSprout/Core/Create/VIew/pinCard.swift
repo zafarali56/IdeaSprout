@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import Kingfisher
 struct pinCard: View {
     private var index: Int
     @Bindable private var viewModel: createViewModel
@@ -17,24 +17,25 @@ struct pinCard: View {
     var body: some View {
         VStack(alignment: .leading,spacing: 5, content: {
             Button(action: {
-                viewModel.pin[index].isSelected.toggle()
+                viewModel.pins[index].isSelected.toggle()
             }, label: {
                 ZStack(alignment:.bottomTrailing, content: {
-                    Image(viewModel.pin[index].imageName)
+           
+					KFImage(URL(string: viewModel.pins[index].imageName))
                         .resizable()
                         .scaledToFill()
                         .frame(height: 250)
                         .frame(width: 160)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
-                    Image(systemName: viewModel.pin[index].isSelected ?"checkmark" : "pin.fill")
+                    Image(systemName: viewModel.pins[index].isSelected ?"checkmark" : "pin.fill")
                         .foregroundStyle(.white)
                         .padding(10)
-                        .background(viewModel.pin[index].isSelected ? .red : .black.opacity(0.3))
+                        .background(viewModel.pins[index].isSelected ? .red : .black.opacity(0.3))
                         .clipShape(Circle())
                         .padding(9)
                 })
             })
-            Text(viewModel.pin[index].item_Name)
+            Text(viewModel.pins[index].item_Name)
                 .foregroundStyle(.black)
                 .font(.subheadline)
                 .lineLimit(2,reservesSpace: true)
