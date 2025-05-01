@@ -17,8 +17,8 @@ struct boardView: View {
         boardOptionView()
         ScrollView(content: {
             LazyVGrid(columns:[GridItem(.flexible()),GridItem(.flexible())],spacing: 16, content: {
-                ForEach(0 ..< 3, content:{ index in
-                   boardCellView()
+				ForEach(0 ..< viewModel.boardWithPins.count, id: \.self, content:{ index in
+					boardCellView(viewModel: viewModel, index: index)
                         .padding()
                 })
             })
