@@ -29,7 +29,7 @@ struct fullScreenPhotoGalleryView: View {
                                 .foregroundStyle(.black)
                         }
                         Spacer()
-                        Button("Next", action: {})
+						Button("Next", action: {viewModel.createPinView.toggle()})
                             .foregroundStyle(.red)
                             .fontWeight(.semibold)
                     }
@@ -72,6 +72,13 @@ struct fullScreenPhotoGalleryView: View {
                 }
                 .padding(.top,5)
                 .scrollIndicators(.hidden)
+				.fullScreenCover(isPresented: $viewModel.createPinView, content: {
+					createPinView(viewModel: viewModel, selectedAsset: viewModel.photoAssests.filter{
+						viewModel.selectedPhotos.contains($0
+							.localIdentifier
+						)
+					})
+				})
                 if !viewModel.selectedPhotos.isEmpty {
                     SelectedPhotoBar(selectedAssest: viewModel.photoAssests.filter {
                         viewModel.selectedPhotos.contains($0.localIdentifier)

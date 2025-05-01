@@ -6,28 +6,51 @@
 //
 
 import SwiftUI
+import Photos
 
 struct createPinView: View {
+	@Environment(\.dismiss) private var dismiss
     @Bindable private var viewModel : createViewModel
-    init(viewModel: createViewModel) {
+	private var selectedAsset : Array<PHAsset> = []
+	init(viewModel: createViewModel, selectedAsset: Array<PHAsset> = []) {
         self._viewModel = Bindable(wrappedValue: viewModel)
+		self.selectedAsset = selectedAsset
     }
+	
+	private func loadSelecteImages (){
+		let options = PHImageRequestOptions()
+		options.deliveryMode = .highQualityFormat
+		options.isNetworkAccessAllowed = true
+		options.isSynchronous = false
+		for assest in selectedAsset{
+			PHImageManager.default().requestImage(for: assest, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFit, options: options, resultHandler: { images, _ in
+				if let image = images {
+					DispatchQueue.main.async {
+						viewModel.selectedImages.append(image)
+					}
+				}
+			})
+		}
+	}
     var body: some View {
         NavigationStack {
             ScrollView(content: {
                 VStack(content: {
-                    Image("anime")
-                        .resizable().aspectRatio(contentMode: .fill).frame(width: 130, height: 180 )
-                        .clipShape(RoundedRectangle(cornerRadius: 15))
-                        .overlay(alignment:.topTrailing, content: {
-                            Circle().fill(.black).frame(width:30, height:30)
-                                .padding()
-                                .overlay(content: {
-                                    Image(systemName: "pencil")
-                                        .imageScale(.large)
-                                        .foregroundStyle(.white)
-                                })
-                        }).padding()
+					if let firstImage = viewModel.selectedImages.first{
+						Image(uiImage: firstImage)
+							.resizable().aspectRatio(contentMode: .fill).frame(width: 130, height: 180 )
+							.clipShape(RoundedRectangle(cornerRadius: 15))
+							.overlay(alignment:.topTrailing, content: {
+								Circle().fill(.black).frame(width:30, height:30)
+									.padding()
+									.overlay(content: {
+										Image(systemName: "pencil")
+											.imageScale(.large)
+											.foregroundStyle(.white)
+									})
+							}).padding()
+					}
+
                     pinItemView(text: $viewModel.title, title: "Title", description: "Tell everyone what your pin is about", color: Color(.darkGray))
                                 pinItemView(text: $viewModel.description, title: "Description", description: "Add description, mention or Hash tag", color: .gray)
                                 pinItemView(text: $viewModel.link, title: "Link", description: "Add your link here", color: .gray)
@@ -49,7 +72,13 @@ struct createPinView: View {
                             })
                         Spacer()
                         
-                        Button(action: {}, label: {
+                        Button(action: {
+							Task{
+								try await viewModel.uploadPin()
+								dismiss()
+							}
+							
+						}, label: {
                             Text("Create")
                                 .padding(10)
                                 .font(.headline)
@@ -67,6 +96,9 @@ struct createPinView: View {
                 .padding(.horizontal, 10)
                 
             })
+			.onAppear{
+				self.loadSelecteImages()
+			}
             .fullScreenCover(isPresented: $viewModel.showTagTopics, content: {
                 tagTopicView(viewModel: viewModel)
           
@@ -77,6 +109,7 @@ struct createPinView: View {
                     .presentationDetents([.medium])
                 
             })
+	
             .scrollIndicators(.hidden)
                 .navigationTitle("Create Pin")
                 .navigationBarTitleDisplayMode(.inline)

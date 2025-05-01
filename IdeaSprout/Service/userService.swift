@@ -34,4 +34,13 @@ class userService {
 	func reset (){
 		self.currentUserData = nil
 	}
+	func uploadPin (itemName: String, description: String?, link : String?, uiImage: UIImage?)async throws{
+		guard let userId = Auth.auth().currentUser?.uid else {return}
+		guard let uiImage = uiImage else {return}
+		guard let imageUrl = try await ImageUploader.uploadCreatePinImage(uiImage) else {return}
+		let pinRef = Firestore.firestore().collection("pins").document()
+		let pin = Item(id: userId, item_Name: itemName, item_Description: description, link: link, isSelected: false, imageName:imageUrl)
+		guard let encodedPin = try? Firestore.Encoder().encode(pin) else { return}
+		try await pinRef.setData(encodedPin)
+	}
 }

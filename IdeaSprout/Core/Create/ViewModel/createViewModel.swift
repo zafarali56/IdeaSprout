@@ -11,6 +11,9 @@ import SwiftUI
 import Photos
 @Observable
 class createViewModel {
+	var createPinView: Bool = false
+	var selectedImages : [UIImage] = [
+	]
     var showCreateBoard : Bool = false
     var boardName : String = ""
     var isSecretBoard : Bool = false
@@ -126,4 +129,8 @@ class createViewModel {
             selectedTopics.insert(topic)
         }
     }
+	
+	func uploadPin () async throws{
+		try await userService.shared.uploadPin(itemName: title, description: description, link: link, uiImage: selectedImages[0])
+	}
 }
