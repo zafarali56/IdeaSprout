@@ -11,6 +11,7 @@ import SwiftUI
 import Photos
 @Observable
 class createViewModel {
+	var shouldDismissAll : Bool = false
 	var createPinView: Bool = false
 	var selectedImages : [UIImage] = [
 	]
