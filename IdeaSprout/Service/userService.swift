@@ -43,4 +43,10 @@ class userService {
 		guard let encodedPin = try? Firestore.Encoder().encode(pin) else { return}
 		try await pinRef.setData(encodedPin)
 	}
+	
+	func fetchPins () async throws -> [Item] {
+		let snapShot = try await Firestore.firestore().collection("pins").getDocuments()
+		var pins = try  snapShot.documents.compactMap({try $0.data(as: Item.self)})
+		return pins
+	}
 }

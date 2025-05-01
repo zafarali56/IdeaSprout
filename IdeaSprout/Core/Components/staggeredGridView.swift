@@ -65,6 +65,7 @@ struct staggeredGridView<Content: View,T: Identifiable>: View where T: Hashable{
         itemCard(item: item)
     }
 }
+import Kingfisher
 
 
 struct itemCard : View {
@@ -74,7 +75,7 @@ struct itemCard : View {
     }
     var body: some View {
         VStack(alignment: .trailing, content: {
-            Image(item.imageName)
+			KFImage(URL(string: item.imageName))
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(maxWidth: .infinity)

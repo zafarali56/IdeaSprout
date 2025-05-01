@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct detailView: View {
     @Bindable private var viewModel : homeViewModel
@@ -20,7 +21,7 @@ struct detailView: View {
             VStack(alignment: .leading ,spacing: 15,content: {
                 ZStack(alignment:.topLeading, content: {
                     ZStack(alignment: .bottomTrailing, content: {
-                        Image(viewModel.items[index].imageName)
+						KFImage(URL(string: viewModel.items[index].imageName))
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
