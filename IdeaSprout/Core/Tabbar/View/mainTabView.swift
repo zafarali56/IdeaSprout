@@ -8,36 +8,49 @@
 import SwiftUI
 
 struct mainTabView: View {
-    @State private var viewModel = mainTabViewModel()
-    var body: some View {
-        TabView( selection : $viewModel.selectedTab){
-            Tab("Home", systemImage: "house", value: 0) {
-               homeView()
-            }
-            Tab("Search", systemImage:"sparkle.magnifyingglass", value: 1){
-               searchView()
-            }
-            Tab("Create", systemImage: "plus", value: 2){
-                
-            }
-            Tab("Notfications", systemImage: "bell", value: 3){
-               notificationView()
-            }
-            Tab("Saved", systemImage: "bookmark", value : 4){
-                savedView()
-            }
-        }.onChange(of: viewModel.selectedTab, {oldValue , newValue in
-            if newValue == 2{
-                viewModel.selectedTab = oldValue
-                viewModel.showCreateMenu = true
-                viewModel.isFullScreen = false
-            }})
-        .sheet(isPresented: $viewModel.showCreateMenu){
-            createView(isFullScreen: $viewModel.isFullScreen)
-                .presentationDetents(viewModel.isFullScreen ? [.large] : [.height(250)])
-                .presentationDragIndicator(.visible)
-        }
-    }
+	@State private var viewModel = mainTabViewModel()
+
+	@State private var previousSelectedTab: Int = 0
+
+	var body: some View {
+		TabView(selection: $viewModel.selectedTab) {
+			homeView()
+				.tabItem { Label("Home", systemImage: "house") }
+				.tag(0)
+			searchView()
+				.tabItem { Label("Search", systemImage: "sparkle.magnifyingglass") }
+				.tag(1)
+
+					Color.clear
+				.tabItem { Label("Create", systemImage: "plus") }
+				.tag(2)
+
+			notificationView()
+				.tabItem { Label("Notifications", systemImage: "bell") }
+				.tag(3)
+
+			savedView()
+				.tabItem { Label("Saved", systemImage: "bookmark") }
+				.tag(4)
+		}
+		.onChange(of: viewModel.selectedTab) { oldValue, newValue in
+			if newValue == 2 {
+				viewModel.selectedTab = previousSelectedTab
+				viewModel.isFullScreen = false // Default to smaller sheet
+				viewModel.showCreateMenu = true
+			} else {
+				previousSelectedTab = newValue
+			}
+		}
+		.sheet(isPresented: $viewModel.showCreateMenu) {
+			createView(isFullScreen: $viewModel.isFullScreen)
+				.presentationDetents(viewModel.isFullScreen ? [.large] : [.height(250), .large]) // Allow large even from small
+				.presentationDragIndicator(.visible)
+		}
+		 .onAppear {
+			 previousSelectedTab = viewModel.selectedTab
+		 }
+	}
 }
 
 #Preview {
