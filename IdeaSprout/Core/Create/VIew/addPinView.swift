@@ -18,7 +18,7 @@ struct addPinView: View {
             ScrollView(content: {
                 LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(),spacing: 16)],spacing: 16)
                 {
-                    ForEach(0 ..< viewModel.pin.count, id: \.self){ index in
+                    ForEach(0 ..< viewModel.pins.count, id: \.self){ index in
                        pinCard(index: index, viewModel: viewModel)
                     }
                 }
@@ -45,7 +45,10 @@ struct addPinView: View {
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing, content: {
                     HStack{
-                        Button {
+						Button { Task{try await viewModel.uploardBoards()
+							viewModel.shouldDismissAll = true
+							dismiss()
+						}
                         }label: {
                                 Text("Done")
                                 .fontWeight(.semibold)

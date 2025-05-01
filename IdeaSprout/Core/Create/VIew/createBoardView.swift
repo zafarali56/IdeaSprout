@@ -81,7 +81,10 @@ struct createBoardView: View {
         .fullScreenCover(isPresented: $viewModel.showAddPinView, content: {
             addPinView(viewModel: viewModel)
         })
-        
+		.onChange(of: viewModel.shouldDismissAll){ _ , newValue in
+			if newValue {
+				dismiss()
+			}}
     }
 }
 

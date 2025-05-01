@@ -15,6 +15,9 @@ class createViewModel {
 	var createPinView: Bool = false
 	var selectedImages : [UIImage] = [
 	]
+	var selectedPinId : [String]{
+		pins.filter({$0.isSelected}).map({$0.id})
+	}
     var showCreateBoard : Bool = false
     var boardName : String = ""
     var isSecretBoard : Bool = false
@@ -22,11 +25,7 @@ class createViewModel {
     var isSelectedTab = "Photos"
     var searchText: String = ""
     var showFullScreenPhotoGallery : Bool = false
-    var pin : [Item] = [.init(id: UUID().uuidString, item_Name: "Funny cat", isSelected: false,     imageName: "habibi"),
-                        .init(id: UUID().uuidString, item_Name: "Tom funny", isSelected: false, imageName: "confused"),
-                        .init(id: UUID().uuidString, item_Name: "Quagmire", isSelected: false, imageName: "baldmire"),
-                        .init(id: UUID().uuidString, item_Name: "Family guy", isSelected: false, imageName: "peta"),
-                        .init(id: UUID().uuidString, item_Name: "Tom & jerry", isSelected: false, imageName: "hungrytom")]
+    var pins : [Item] = []
    
     
     var tabs = ["All", "Videos", "Photos"]
@@ -100,7 +99,14 @@ class createViewModel {
     var link: String = ""
     var photoAssests: [PHAsset] = []
     var selectedPhotos: Set<String> = []
-    func photoPermission () {
+    
+	init(){
+		Task {
+			try await loadPins()
+		}
+	}
+	
+	func photoPermission () {
         PHPhotoLibrary.requestAuthorization(for: .readWrite){ status in
             DispatchQueue.main.async{
                 if status == .authorized {
@@ -133,5 +139,13 @@ class createViewModel {
 	
 	func uploadPin () async throws{
 		try await userService.shared.uploadPin(itemName: title, description: description, link: link, uiImage: selectedImages[0])
+	}
+	
+	
+	func loadPins () async throws{
+		pins = try await userService.shared.fetchPins()
+	}
+	func uploardBoards () async throws{
+		try await userService.shared.uploadBoard(boardName: boardName, pinId: selectedPinId, tags: [tag], isSecret: isSecretBoard)
 	}
 }
