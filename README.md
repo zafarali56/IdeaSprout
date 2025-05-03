@@ -1,34 +1,73 @@
-# 📌 Pinterest UI Replica in SwiftUI + Firebase
+# Pinterest UI Replica (SwiftUI + Firebase)
 
-A modern Pinterest-style mobile UI built with **SwiftUI**, **Firebase**, **Firestore**, **Cloudinary**, and **Kingfisher**. This app replicates core Pinterest functionality including a staggered grid, user authentication, and image uploads with caching and remote storage.
-
----
-
-## 🚀 Features
-
-- Pinterest-style grid layout
-- User authentication (Login / Signup) via Firebase
-- Image upload and retrieval with Cloudinary
-- Image caching using Kingfisher
-- Profile screen and settings
-- Built using MVVM architecture for scalability
+A beautiful Pinterest-style UI replica built using **SwiftUI**, **Firebase**, **Firestore**, **Kingfisher**, and **Cloudinary**. This app mimics Pinterest's core layout and functionality, including image browsing, uploading, and user authentication.
 
 ---
 
-## 🛠 Tech Stack
+## Features
 
-- **SwiftUI** – Declarative UI framework by Apple
-- **Firebase Auth** – For user authentication
-- **Firestore** – NoSQL real-time database
-- **Cloudinary** – For image uploads and delivery
-- **Kingfisher** – For image downloading and caching
-- **MVVM** – For separation of concerns
+- Firebase Authentication (Email & Password)
+- Pinterest-like staggered grid view
+- Cloudinary for image uploads
+- Kingfisher for image downloading and caching
+- Profile and settings screen
+- Clean SwiftUI navigation using MVVM pattern
 
 ---
 
-## 🧑‍💻 Getting Started
+## Tech Stack
 
-1. **Clone the Repository**
+- **SwiftUI** – Modern declarative UI framework
+- **Firebase** – Auth and Firestore for backend
+- **Firestore** – Real-time cloud database
+- **Cloudinary** – Cloud media management and CDN
+- **Kingfisher** – Swift image downloader and cache
+- **MVVM Architecture** – Clean, testable code structure
+
+---
+
+## Screenshots
+
+
+
+<img src="images/IMG_3659.png" width="400" />
+<img src="images/IMG_3661.png" width="400" />
+<img src="images/IMG_3662.png" width="400" />
+<img src="images/IMG_3663.png" width="400" />
+<img src="images/IMG_3664.png" width="400" />
+
+
+
+<img src="images/IMG_3660.png" width="400" />
+<img src="images/IMG_3674.png" width="400" />
+<img src="images/IMG_3675.png" width="400" />
+
+
+
+<img src="images/IMG_3665.png" width="400" />
+<img src="images/IMG_3676.png" width="400" />
+<img src="images/IMG_3677.png" width="400" />
+
+
+
+<img src="images/IMG_3666.png" width="400" />
+<img src="images/IMG_3672.png" width="400" />
+<img src="images/IMG_3673.png" width="400" />
+<img src="images/IMG_3678.png" width="400" />
+
+
+
+<img src="images/IMG_3667.png" width="400" />
+<img src="images/IMG_3668.png" width="400" />
+<img src="images/IMG_3669.png" width="400" />
+<img src="images/IMG_3670.png" width="400" />
+<img src="images/IMG_3671.png" width="400" />
+
+---
+
+## Getting Started
+
+1. **Clone the repository:**
 
 ```bash
 git clone https://github.com/your-username/pinterest-ui-replica.git
