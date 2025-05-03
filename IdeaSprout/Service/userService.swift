@@ -57,4 +57,30 @@ class userService {
 		guard let enCodedBoard = try? Firestore.Encoder().encode(board) else {return}
 		try await boardRef.setData(enCodedBoard)
 	}
+	
+	func fetchCurrentUserPins () async throws -> Array<Item>{
+		guard let userId = Auth.auth().currentUser?.uid else {return []}
+		let snapShot = try await Firestore.firestore().collection("pins").whereField("uid", isEqualTo: userId).getDocuments()
+		let pins = try snapShot.documents.compactMap({try $0.data(as: Item.self)})
+		return pins
+	}
+	
+	func fetchCurrentUserBoardsWithPins () async throws -> [(Board,[Item])]{
+			guard let userId = Auth.auth().currentUser?.uid else {return []}
+			let snapShot = try await Firestore.firestore().collection("boards").whereField("uid", isEqualTo: userId).getDocuments()
+			let boards = try snapShot.documents.compactMap({try $0.data(as: Board.self)})
+			var boardsWithPins : [(Board,[Item])] = []
+			for board in boards{
+				let pinId = board.pinId
+				if !pinId.isEmpty{
+					let pinSnapShot = try await Firestore.firestore().collection("pins").whereField("id", in: pinId).getDocuments()
+					let pins = try pinSnapShot.documents.map{try $0.data(as: Item.self)}
+					boardsWithPins.append((board,pins))
+				} else {
+					boardsWithPins.append((board, [])) 
+				}
+			}
+			return boardsWithPins
+		}
+	
 }
