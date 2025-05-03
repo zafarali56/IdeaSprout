@@ -34,7 +34,6 @@ A beautiful Pinterest-style UI replica built using **SwiftUI**, **Firebase**, **
 <img src="images/IMG_3661.png" width="400" />
 <img src="images/IMG_3662.png" width="400" />
 <img src="images/IMG_3663.png" width="400" />
-<img src="images/IMG_3664.png" width="400" />
 
 
 
